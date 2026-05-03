@@ -217,11 +217,17 @@
     }
 
     .about-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-wrap: wrap;
       gap: 1.5rem;
       max-width: 700px;
       margin: 0 auto;
+      justify-content: center;
+    }
+
+    .about-card {
+      flex: 1 1 180px;
+      max-width: 220px;
     }
 
     .about-card {
@@ -440,8 +446,15 @@
     .float-wa:hover { transform: scale(1.1); }
 
     /* ── MOBILE ── */
-    @media (max-width: 400px) {
-      .about-grid { grid-template-columns: 1fr 1fr; }
+    @media (max-width: 480px) {
+      .about-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      .about-card {
+        width: 100%;
+        max-width: 300px;
+      }
     }
 
     /* ── GALLERY HINT ── */
@@ -648,20 +661,109 @@
     .hero .tagline    { animation-delay: 0.3s; }
     .hero .divider    { animation-delay: 0.4s; }
     .hero .cta-group  { animation-delay: 0.5s; }
+
+    /* ── NEW HERO SECTION ── */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      background-image: url('images/graffiti-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.65);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .logo-box {
+      border: 2px solid #d4af37;
+      padding: 15px 25px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .logo-44 {
+      color: #d4af37;
+      font-size: 38px;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .logo-text {
+      color: #d4af37;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-top: 5px;
+      font-weight: bold;
+    }
+
+    .slogan {
+      color: #d4af37;
+      font-size: 32px;
+      font-weight: bold;
+      margin: 15px 0 5px 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .cta-button {
+      background-color: #d4af37;
+      color: #111;
+      padding: 12px 28px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      border-radius: 30px;
+      margin-top: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-family: 'Heebo', sans-serif;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(212,175,55,0.5);
+    }
   </style>
 </head>
 <body>
 
   <!-- ── HERO ── -->
-  <section class="hero">
-    <div class="logo-badge">
-      <div class="num">44</div>
-      <div class="sub">Men's Boutique</div>
+  <div class="hero-section">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <div class="logo-box">
+        <span class="logo-44">44</span>
+        <span class="logo-text">MEN'S BOUTIQUE</span>
+      </div>
+      <h1 class="slogan">תתלבש כמו גבר</h1>
+      <a href="#products" class="cta-button">צפה בקולקציה</a>
     </div>
-    <h1><span>44<br>Men's Boutique</span></h1>
-    <p class="tagline">תתלבש כמו גבר</p>
-    <div class="divider"></div>
-  </section>
+  </div>
 
   <!-- ── ABOUT ── -->
   <section class="about">
@@ -678,9 +780,6 @@
         <h3>עסק של מילואמניק</h3>
         <p>תומכים במילואימניקים ומשפחותיהם</p>
       </div>
-      <a href="https://waze.com/ul?q=יוסף+קלוזנר+6+ראשון+לציון&navigate=yes" target="_blank" class="about-card" style="text-decoration:none; padding:0; overflow:hidden;">
-        <img src="images/waze-logo.jpg" alt="ניווט בWaze" style="width:100%; height:100%; object-fit:cover; display:block;" />
-      </a>
     </div>
   </section>
 
@@ -701,16 +800,20 @@
         <div class="product-info">
           <h3>חולצות <span class="item-count">9</span></h3>
           <div class="desc">חולצות אוברסייז</div>
-          <div class="gallery-cta">📸 לחץ לגלריה</div>
+          <div class="gallery-cta">📸 צפה בקולקציה</div>
         </div>
       </div>
 
       <!-- מכנסיים -->
-      <div class="product-card">
-        <div class="product-img">👖</div>
+      <div class="product-card" onclick="openPantsGallery()" style="cursor:pointer;">
+        <div class="product-img">
+          <img src="images/pants-placeholder.jpg" alt="מכנסיים" loading="lazy" />
+          <div class="gallery-hint">קולקציה בקרוב</div>
+        </div>
         <div class="product-info">
           <h3>מכנסיים</h3>
           <div class="desc">קולקציה חדשה בקרוב</div>
+          <div class="gallery-cta">📸 צפה בקולקציה</div>
         </div>
       </div>
 
@@ -723,7 +826,7 @@
         <div class="product-info">
           <h3>ג'ינסים <span class="item-count">1</span></h3>
           <div class="desc">ג'ינס קרוע אוברסייז</div>
-          <div class="gallery-cta">📸 לחץ לגלריה</div>
+          <div class="gallery-cta">📸 צפה בקולקציה</div>
         </div>
       </div>
 
@@ -736,17 +839,20 @@
         <div class="product-info">
           <h3>נעליים <span class="item-count">6</span></h3>
           <div class="desc">סניקרס פרימיום</div>
-          <div class="gallery-cta">📸 לחץ לגלריה</div>
+          <div class="gallery-cta">📸 צפה בקולקציה</div>
         </div>
       </div>
 
-<!-- מוצר 6 -->
+      <!-- אקססוריז -->
       <div class="product-card">
-        <div class="product-img">🧣</div>
+        <div class="product-img">
+          <img src="images/accessories-placeholder.jpg" alt="אקססוריז" loading="lazy" />
+          <div class="gallery-hint">בקרוב</div>
+        </div>
         <div class="product-info">
           <h3>אקססוריז</h3>
-          <div class="price">₪XXX</div>
           <div class="desc">השלימו את הלוק</div>
+          <div class="gallery-cta">📸 צפה בקולקציה</div>
         </div>
       </div>
 
@@ -759,7 +865,7 @@
         <div class="product-info">
           <h3>מכנסיים וג'ינסים קצרים <span class="item-count">13</span></h3>
           <div class="desc">קולקציית קיץ</div>
-          <div class="gallery-cta">📸 לחץ לגלריה</div>
+          <div class="gallery-cta">📸 צפה בקולקציה</div>
         </div>
       </div>
 
@@ -772,7 +878,7 @@
         <div class="product-info">
           <h3>חליפות <span class="item-count">5</span></h3>
           <div class="desc">חליפות פרימיום לכל אירוע</div>
-          <div class="gallery-cta">📸 לחץ לגלריה</div>
+          <div class="gallery-cta">📸 צפה בקולקציה</div>
         </div>
       </div>
 
