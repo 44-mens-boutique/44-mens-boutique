@@ -755,6 +755,19 @@
         </div>
       </div>
 
+      <!-- מכנסיים וג'ינסים קצרים -->
+      <div class="product-card" onclick="openShortsGallery()" style="cursor:pointer;">
+        <div class="product-img">
+          <img src="images/shorts-jeans-blue.jpg" alt="מכנסיים קצרים" loading="lazy" />
+          <div class="gallery-hint">2 פריטים לצפייה</div>
+        </div>
+        <div class="product-info">
+          <h3>מכנסיים וג'ינסים קצרים <span class="item-count">2</span></h3>
+          <div class="desc">קולקציית קיץ</div>
+          <div class="gallery-cta">📸 לחץ לגלריה</div>
+        </div>
+      </div>
+
       <!-- מוצר 7 -->
       <div class="product-card" onclick="openGallery()" style="cursor:pointer;">
         <div class="product-img">
@@ -868,6 +881,11 @@
       { src: 'images/pants-denim-cargo.jpg', name: 'מכנסי קארגו ג\'ינס', price: '₪180' },
     ];
 
+    const shortsImages = [
+      { src: 'images/shorts-jeans-blue.jpg', name: 'ג\'ינס קצר קרוע כחול', price: '₪219' },
+      { src: 'images/shorts-jeans-light.jpg', name: 'ג\'ינס קצר קרוע תכלת', price: '₪219' },
+    ];
+
     const jeansImages = [
       { src: 'images/jeans-ripped-blue.jpg', name: 'ג\'ינס קרוע אוברסייז כחול', price: '₪239' },
     ];
@@ -944,6 +962,7 @@
       if (e.target === document.getElementById('grid-gallery-modal')) closeGridGallery();
     }
 
+    function openShortsGallery()  { openGridGallery(shortsImages, 'מכנסיים וג\'ינסים קצרים'); }
     function openJeansGallery()   { openGridGallery(jeansImages, 'ג\'ינסים'); }
     function openPantsGallery()  { openGridGallery(pantsImages, 'מכנסיים'); }
     function openTshirtGallery() { openGridGallery(tshirtImages, 'חולצות'); }
