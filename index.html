@@ -907,12 +907,11 @@
     let currentGridImages = [];
 
     function buildWaLink(itemName, imgSrc, price) {
-      const siteUrl = 'https://44mens-boutique.netlify.app';
-      const productUrl = siteUrl + '/product?img=' + encodeURIComponent(imgSrc) +
-                         '&name=' + encodeURIComponent(itemName) +
-                         '&price=' + encodeURIComponent(price || '');
+      const rawImg = imgSrc
+        ? 'https://raw.githubusercontent.com/44-mens-boutique/44-mens-boutique/main/' + imgSrc
+        : '';
       const msg = encodeURIComponent(
-        productUrl + '\n' +
+        (rawImg ? rawImg + '\n' : '') +
         'היי! ראיתי את *' + itemName + '* באתר 44 Men\'s Boutique 🔥\n' +
         'מעוניין לדעת מה המלאי שקיים 🙏'
       );
