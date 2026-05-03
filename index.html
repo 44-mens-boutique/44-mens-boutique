@@ -908,12 +908,12 @@
 
     function buildWaLink(itemName, imgSrc) {
       const imgUrl = imgSrc
-        ? 'https://44mens-boutique.netlify.app/' + imgSrc + '\n'
+        ? 'https://44mens-boutique.netlify.app/' + imgSrc
         : '';
       const msg = encodeURIComponent(
+        (imgUrl ? imgUrl + '\n' : '') +
         'היי! ראיתי את *' + itemName + '* באתר 44 Men\'s Boutique 🔥\n' +
-        '📸 ' + imgUrl +
-        'שאל אותנו על צבעים ומידות שנשארו 🙏'
+        'מעוניין לדעת מה המלאי שקיים 🙏'
       );
       return 'https://wa.me/' + WA_NUMBER + '?text=' + msg;
     }
