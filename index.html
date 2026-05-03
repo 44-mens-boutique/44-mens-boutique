@@ -906,12 +906,13 @@
     const WA_NUMBER = '972504375644';
     let currentGridImages = [];
 
-    function buildWaLink(itemName, imgSrc) {
-      const imgUrl = imgSrc
-        ? 'https://44mens-boutique.netlify.app/' + imgSrc
-        : '';
+    function buildWaLink(itemName, imgSrc, price) {
+      const siteUrl = 'https://44mens-boutique.netlify.app';
+      const productUrl = siteUrl + '/product?img=' + encodeURIComponent(imgSrc) +
+                         '&name=' + encodeURIComponent(itemName) +
+                         '&price=' + encodeURIComponent(price || '');
       const msg = encodeURIComponent(
-        (imgUrl ? imgUrl + '\n' : '') +
+        productUrl + '\n' +
         'היי! ראיתי את *' + itemName + '* באתר 44 Men\'s Boutique 🔥\n' +
         'מעוניין לדעת מה המלאי שקיים 🙏'
       );
@@ -945,7 +946,7 @@
       const item = currentGridImages[index];
       document.getElementById('detail-img').src = item.src;
       document.getElementById('detail-price').textContent = item.price;
-      document.getElementById('detail-wa').href = buildWaLink(item.name, item.src);
+      document.getElementById('detail-wa').href = buildWaLink(item.name, item.src, item.price);
       document.getElementById('grid-view').style.display = 'none';
       document.getElementById('detail-view').style.display = 'flex';
       document.getElementById('grid-gallery-modal').scrollTop = 0;
