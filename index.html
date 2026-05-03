@@ -327,6 +327,25 @@
       margin-top: 0.3rem;
     }
 
+    .gallery-cta {
+      margin-top: 0.55rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: 20px;
+      padding: 0.2rem 0.65rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .product-card:hover .gallery-cta {
+      background: rgba(201,168,76,0.13);
+      border-color: var(--gold);
+    }
+
     .item-count {
       font-size: 0.72rem;
       color: var(--gold);
@@ -678,11 +697,12 @@
       <div class="product-card" onclick="openTshirtGallery()" style="cursor:pointer;">
         <div class="product-img">
           <img src="images/tshirt-memo-god.jpg" alt="חולצות" loading="lazy" />
-          <div class="gallery-hint">📸 לחץ לגלריה</div>
+          <div class="gallery-hint">9 פריטים לצפייה</div>
         </div>
         <div class="product-info">
           <h3>חולצות <span class="item-count">9</span></h3>
           <div class="desc">חולצות אוברסייז</div>
+          <div class="gallery-cta">📸 לחץ לגלריה</div>
         </div>
       </div>
 
@@ -690,11 +710,12 @@
       <div class="product-card" onclick="openPantsGallery()" style="cursor:pointer;">
         <div class="product-img">
           <img src="images/pants-leopard.jpg" alt="מכנסיים" loading="lazy" />
-          <div class="gallery-hint">📸 לחץ לגלריה</div>
+          <div class="gallery-hint">2 פריטים לצפייה</div>
         </div>
         <div class="product-info">
           <h3>מכנסיים <span class="item-count">2</span></h3>
           <div class="desc">קולקציה חדשה</div>
+          <div class="gallery-cta">📸 לחץ לגלריה</div>
         </div>
       </div>
 
@@ -712,11 +733,12 @@
       <div class="product-card" onclick="openShoeGallery()" style="cursor:pointer;">
         <div class="product-img">
           <img src="images/shoe-qoqll-bw.jpg" alt="נעליים" loading="lazy" />
-          <div class="gallery-hint">📸 לחץ לגלריה</div>
+          <div class="gallery-hint">6 פריטים לצפייה</div>
         </div>
         <div class="product-info">
           <h3>נעליים <span class="item-count">6</span></h3>
           <div class="desc">סניקרס פרימיום</div>
+          <div class="gallery-cta">📸 לחץ לגלריה</div>
         </div>
       </div>
 
@@ -734,11 +756,12 @@
       <div class="product-card" onclick="openGallery()" style="cursor:pointer;">
         <div class="product-img">
           <img src="images/suit-white.jpg" alt="חליפת לינן" loading="lazy" />
-          <div class="gallery-hint">📸 לחץ לגלריה</div>
+          <div class="gallery-hint">3 פריטים לצפייה</div>
         </div>
         <div class="product-info">
           <h3>חליפות <span class="item-count">3</span></h3>
           <div class="desc">חליפות פרימיום לכל אירוע</div>
+          <div class="gallery-cta">📸 לחץ לגלריה</div>
         </div>
       </div>
 
