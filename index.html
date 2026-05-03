@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>44 Men's Boutique | ראשון לציון</title>
+  <meta name="description" content="44 Men's Boutique - בוטיק גברים פרימיום בראשון לציון. אופנה גברית איכותית במחירים נגישים." />
+
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="44 Men's Boutique" />
+  <meta property="og:description" content="בוטיק גברים פרימיום בראשון לציון 🖤" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark2: #1a1a1a;
+      --dark3: #222222;
+      --white: #f5f5f5;
+      --gray: #888;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: url('images/wall-bg.jpg') center center / cover fixed;
+      color: var(--white);
+      direction: rtl;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero, section, footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    .logo-badge {
+      width: 110px;
+      height: 110px;
+      background: var(--dark2);
+      border: 2px solid var(--gold);
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.8rem;
+      position: relative;
+      box-shadow: 0 0 40px rgba(201, 168, 76, 0.25);
+    }
+
+    .logo-badge .num {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .logo-badge .sub {
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 8vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      position: relative;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero .tagline {
+      margin-top: 1rem;
+      font-size: clamp(2.2rem, 8vw, 4rem);
+      color: var(--gold);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      position: relative;
+    }
+
+    .hero .divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.8rem auto;
+      position: relative;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      width: 100%;
+      max-width: 320px;
+      position: relative;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201, 168, 76, 0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+    }
+
+    .btn-outline:hover {
+      background: rgba(201, 168, 76, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25d366, #1ebe5d);
+      color: #fff;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+    }
+
+    /* ── SECTION COMMON ── */
+    section {
+      padding: 5rem 1.5rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.6rem, 5vw, 2.5rem);
+      font-weight: 800;
+    }
+
+    .section-title h2 span {
+      color: var(--gold);
+    }
+
+    .section-title p {
+      color: var(--gray);
+      margin-top: 0.6rem;
+      font-size: 1rem;
+    }
+
+    .gold-line {
+      width: 50px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1rem auto 0;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: transparent;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .about-card {
+      background: var(--dark2);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 16px;
+      padding: 1.8rem 1rem;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .about-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .about-card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .about-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .about-card p {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* ── PRODUCTS ── */
+    .products {
+      background: transparent;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 600px) {
+      .products-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .product-card {
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(201, 168, 76, 0.4);
+    }
+
+    .product-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--dark3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: rgba(201, 168, 76, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 1rem;
+    }
+
+    .product-info h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .product-info .price {
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+
+    .product-info .desc {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-top: 0.3rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact {
+      background: transparent;
+      text-align: center;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--white);
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    .contact-row .ci {
+      width: 42px;
+      height: 42px;
+      background: var(--dark2);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .cta-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: transparent;
+      border-top: 1px solid rgba(201,168,76,0.15);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    footer p {
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+
+    footer span {
+      color: var(--gold);
+    }
+
+    /* ── FLOATING WHATSAPP ── */
+    .float-wa {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      width: 58px;
+      height: 58px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      z-index: 999;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .float-wa:hover { transform: scale(1.1); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 400px) {
+      .about-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── GALLERY HINT ── */
+    .product-img { position: relative; }
+    .gallery-hint {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.6);
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 0.4rem;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .product-card:hover .gallery-hint { opacity: 1; }
+
+    /* ── GRID GALLERY MODAL ── */
+    .grid-gallery-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 9999;
+      overflow-y: auto;
+      padding: 3.5rem 1rem 2rem;
+    }
+    .grid-gallery-modal.open { display: block; }
+
+    .gallery-close {
+      position: fixed;
+      top: 1.2rem;
+      left: 1.2rem;
+      background: var(--dark2);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--white);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      z-index: 10000;
+    }
+
+    .grid-view-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .grid-title {
+      text-align: center;
+      color: var(--gold);
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 1.2rem;
+    }
+
+    .thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.7rem;
+    }
+
+    @media (max-width: 400px) {
+      .thumb-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .thumb-item {
+      aspect-ratio: 3/4;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      background: var(--dark3);
+    }
+    .thumb-item:hover {
+      border-color: var(--gold);
+      transform: scale(1.03);
+    }
+    .thumb-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .thumb-price {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.65);
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 0.3rem;
+    }
+
+    .detail-view-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .back-btn {
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      padding: 0.45rem 1.2rem;
+      border-radius: 50px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.9rem;
+      cursor: pointer;
+      align-self: flex-start;
+      transition: background 0.2s;
+    }
+    .back-btn:hover { background: rgba(201,168,76,0.3); }
+
+    .detail-img-wrap {
+      position: relative;
+      width: 100%;
+    }
+    .detail-img-wrap img {
+      width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 0 60px rgba(201,168,76,0.2);
+      display: block;
+    }
+
+    .gallery-wa-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #25d366, #1ebe5d);
+      color: #fff;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 50px;
+      padding: 0.75rem 1.2rem;
+      width: 100%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .gallery-wa-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(37,211,102,0.5);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero > * {
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .hero .logo-badge { animation-delay: 0.1s; }
+    .hero h1          { animation-delay: 0.2s; }
+    .hero .tagline    { animation-delay: 0.3s; }
+    .hero .divider    { animation-delay: 0.4s; }
+    .hero .cta-group  { animation-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="logo-badge">
+      <div class="num">44</div>
+      <div class="sub">Men's Boutique</div>
+    </div>
+    <h1><span>44<br>Men's Boutique</span></h1>
+    <p class="tagline">תתלבש כמו גבר</p>
+    <div class="divider"></div>
+    <div class="cta-group">
+      <a href="#products" class="btn btn-outline">
+        👕 לקטלוג המוצרים
+      </a>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section class="about">
+    <div class="section-title">
+      <h2>למה <span>44</span>?</h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="icon">👑</div>
+        <h3>איכות פרימיום</h3>
+        <p>בגדים מבדים איכותיים שנראים ומרגישים יוקרתיים</p>
+      </div>
+      <div class="about-card">
+        <div class="icon">✂️</div>
+        <h3>סגנון ייחודי</h3>
+        <p>קולקציות מעוצבות לגבר המודרני</p>
+      </div>
+      <div class="about-card">
+        <div class="icon">📍</div>
+        <h3>ראשון לציון</h3>
+        <p>יוסף קלוזנר 6<br>בואו לבקר אותנו</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRODUCTS ── -->
+  <section class="products" id="products">
+    <div class="section-title">
+      <h2>ה<span>קטלוג</span> שלנו</h2>
+      <p>מוצרים נבחרים לגבר המודרני</p>
+      <div class="gold-line"></div>
+    </div>
+    <div class="products-grid">
+
+      <!-- חולצות -->
+      <div class="product-card" onclick="openTshirtGallery()" style="cursor:pointer;">
+        <div class="product-img">
+          <img src="images/tshirt-memo-god.jpg" alt="חולצות" loading="lazy" />
+          <div class="gallery-hint">📸 לחץ לגלריה</div>
+        </div>
+        <div class="product-info">
+          <h3>חולצות</h3>
+          <div class="desc">חולצות אוברסייז | 9 דגמים</div>
+        </div>
+      </div>
+
+      <!-- מכנסיים -->
+      <div class="product-card" onclick="openPantsGallery()" style="cursor:pointer;">
+        <div class="product-img">
+          <img src="images/pants-leopard.jpg" alt="מכנסיים" loading="lazy" />
+          <div class="gallery-hint">📸 לחץ לגלריה</div>
+        </div>
+        <div class="product-info">
+          <h3>מכנסיים</h3>
+          <div class="desc">קולקציה חדשה</div>
+        </div>
+      </div>
+
+      <!-- מוצר 3 -->
+      <div class="product-card">
+        <div class="product-img">👖</div>
+        <div class="product-info">
+          <h3>גינסים</h3>
+          <div class="price">₪XXX</div>
+          <div class="desc">קולקציה חדשה</div>
+        </div>
+      </div>
+
+      <!-- נעליים -->
+      <div class="product-card" onclick="openShoeGallery()" style="cursor:pointer;">
+        <div class="product-img">
+          <img src="images/shoe-qoqll-bw.jpg" alt="נעליים" loading="lazy" />
+          <div class="gallery-hint">📸 לחץ לגלריה</div>
+        </div>
+        <div class="product-info">
+          <h3>נעליים</h3>
+          <div class="desc">סניקרס פרימיום | 3 דגמים</div>
+        </div>
+      </div>
+
+<!-- מוצר 6 -->
+      <div class="product-card">
+        <div class="product-img">🧣</div>
+        <div class="product-info">
+          <h3>אקססוריז</h3>
+          <div class="price">₪XXX</div>
+          <div class="desc">שלמו את הלוק</div>
+        </div>
+      </div>
+
+      <!-- מוצר 7 -->
+      <div class="product-card" onclick="openGallery()" style="cursor:pointer;">
+        <div class="product-img">
+          <img src="images/suit-white.jpg" alt="חליפת לינן" loading="lazy" />
+          <div class="gallery-hint">📸 לחץ לגלריה</div>
+        </div>
+        <div class="product-info">
+          <h3>חליפות</h3>
+          <div class="desc">חליפות פרימיום לכל אירוע</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section class="contact" id="contact">
+    <div class="section-title">
+      <h2>צור <span>קשר</span></h2>
+      <p>נשמח לעזור לך למצוא את הסגנון המושלם</p>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="contact-info">
+      <a href="tel:+972504375644" class="contact-row" id="phone-link">
+        <div class="ci">📞</div>
+        <span>050-4375644</span>
+      </a>
+      <a href="https://wa.me/972504375644" class="contact-row" id="wa-link">
+        <div class="ci">💬</div>
+        <span>וואטסאפ</span>
+      </a>
+      <a href="https://www.instagram.com/_44boutique_" class="contact-row" target="_blank">
+        <div class="ci">📸</div>
+        <span>@_44boutique_ באינסטגרם</span>
+      </a>
+      <a href="https://www.facebook.com/44mensboutique" class="contact-row" target="_blank">
+        <div class="ci">📘</div>
+        <span>44 Men's Boutique בפייסבוק</span>
+      </a>
+      <a href="https://maps.google.com/?q=יוסף+קלוזנר+6+ראשון+לציון" class="contact-row" target="_blank">
+        <div class="ci">📍</div>
+        <span>יוסף קלוזנר 6, ראשון לציון</span>
+      </a>
+    </div>
+
+    <div class="cta-bottom">
+      <a href="https://wa.me/972504375644?text=היי, אני מעוניין במוצרים שלכם 👋" class="btn btn-whatsapp" id="wa-bottom">
+        📲 הזמן עכשיו בוואטסאפ
+      </a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>© 2026 <span>44 Men's Boutique</span> • ראשון לציון • כל הזכויות שמורות</p>
+  </footer>
+
+  <!-- ── GRID GALLERY MODAL ── -->
+  <div id="grid-gallery-modal" class="grid-gallery-modal" onclick="handleGridBgClick(event)">
+    <button class="gallery-close" onclick="closeGridGallery()">✕</button>
+
+    <!-- תצוגת גריד -->
+    <div id="grid-view" class="grid-view-container">
+      <h2 id="grid-title" class="grid-title"></h2>
+      <div id="thumb-grid" class="thumb-grid"></div>
+    </div>
+
+    <!-- תצוגת פריט בודד -->
+    <div id="detail-view" class="detail-view-container" style="display:none">
+      <button class="back-btn" onclick="backToGrid()">→ חזרה לכל הפריטים</button>
+      <div class="detail-img-wrap">
+        <img id="detail-img" src="" alt="" />
+      </div>
+      <div id="detail-price" style="color:var(--gold);font-weight:800;font-size:1.3rem;"></div>
+      <a id="detail-wa" href="" target="_blank" class="gallery-wa-btn">
+        💬 שאל איזה מידות נשארו
+      </a>
+    </div>
+  </div>
+
+  <!-- ── FLOATING WHATSAPP ── -->
+  <a href="https://wa.me/972504375644?text=היי, אני רוצה לשמוע על המוצרים שלכם 👋" class="float-wa" id="wa-float" target="_blank" title="וואטסאפ">
+    💬
+  </a>
+
+  <script>
+    const tshirtImages = [
+      { src: 'images/tshirt-memo-god.jpg', name: 'חולצת MEMO – I have seen the goodness of God', price: '₪159' },
+      { src: 'images/tshirt-regrata-5.jpg', name: 'חולצת Regrata – Own Tears Applause Treasures Everything', price: '₪159' },
+      { src: 'images/tshirt-1975-black.jpg', name: 'חולצת 1975 שחורה', price: '₪159' },
+      { src: 'images/tshirt-note-broke.jpg', name: 'חולצת NOTE – I Ain\'t Rich But I Get Up Everyday', price: '₪159' },
+      { src: 'images/tshirt-believe-god.jpg', name: 'חולצת Believe God – That You Matter To Him', price: '₪159' },
+      { src: 'images/tshirt-love-on-tour.jpg', name: 'חולצת Love On Tour – Nashville 2021', price: '₪159' },
+      { src: 'images/tshirt-1975-brown.jpg', name: 'חולצת 1975 חומה', price: '₪159' },
+      { src: 'images/tshirt-770-black.jpg', name: 'חולצת 770 שחורה', price: '₪159' },
+      { src: 'images/tshirt-acne-studios.jpg', name: 'חולצת Acne Studios שחורה', price: '₪159' },
+    ];
+
+    const suitImages = [
+      { src: 'images/suit-white.jpg', name: 'חליפת לינן לבנה', price: '₪299' },
+      { src: 'images/suit-beige.jpg', name: 'חליפת לינן בז\'', price: '₪349' },
+      { src: 'images/suit-black.jpg', name: 'חליפת לינן שחורה', price: '₪349' },
+    ];
+
+    const pantsImages = [
+      { src: 'images/pants-leopard.jpg', name: 'מכנסי לאופרד לבן', price: '₪189' },
+      { src: 'images/pants-denim-cargo.jpg', name: 'מכנסי קארגו ג\'ינס', price: '₪180' },
+    ];
+
+    const shoeImages = [
+      { src: 'images/shoe-void-black.jpg', name: 'סניקרס Void 2025 שחור', price: '₪299' },
+      { src: 'images/shoe-void-beige.jpg', name: 'סניקרס Void 2025 בז\'', price: '₪299' },
+      { src: 'images/shoe-voga-white.jpg', name: 'סניקרס VOGA לבן', price: '₪299' },
+      { src: 'images/shoe-qoqll-bw.jpg', name: 'סניקרס QOQLL שחור-לבן', price: '₪179' },
+      { src: 'images/shoe-sandal-black.jpg', name: 'סנדל כפכף שחור עם אבזמים', price: '₪179' },
+      { src: 'images/shoe-gray-sneaker.jpg', name: 'סניקרס אפור פלטפורמה', price: '₪349' },
+    ];
+
+    const WA_NUMBER = '972504375644';
+    let currentGridImages = [];
+
+    function buildWaLink(itemName, imgSrc) {
+      const imgUrl = imgSrc
+        ? 'https://44mens-boutique.netlify.app/' + imgSrc + '\n'
+        : '';
+      const msg = encodeURIComponent(
+        'היי! ראיתי את *' + itemName + '* באתר 44 Men\'s Boutique 🔥\n' +
+        '📸 ' + imgUrl +
+        'שאל אותנו על צבעים ומידות שנשארו 🙏'
+      );
+      return 'https://wa.me/' + WA_NUMBER + '?text=' + msg;
+    }
+
+    function openGridGallery(images, title) {
+      currentGridImages = images;
+      document.getElementById('grid-title').textContent = title;
+
+      const grid = document.getElementById('thumb-grid');
+      grid.innerHTML = '';
+      images.forEach(function(item, i) {
+        const div = document.createElement('div');
+        div.className = 'thumb-item';
+        div.onclick = function() { showDetail(i); };
+        div.innerHTML =
+          '<img src="' + item.src + '" alt="' + item.name + '" loading="lazy" />' +
+          '<div class="thumb-price">' + item.price + '</div>';
+        grid.appendChild(div);
+      });
+
+      document.getElementById('grid-view').style.display = 'block';
+      document.getElementById('detail-view').style.display = 'none';
+      document.getElementById('grid-gallery-modal').classList.add('open');
+      document.getElementById('grid-gallery-modal').scrollTop = 0;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showDetail(index) {
+      const item = currentGridImages[index];
+      document.getElementById('detail-img').src = item.src;
+      document.getElementById('detail-price').textContent = item.price;
+      document.getElementById('detail-wa').href = buildWaLink(item.name, item.src);
+      document.getElementById('grid-view').style.display = 'none';
+      document.getElementById('detail-view').style.display = 'flex';
+      document.getElementById('grid-gallery-modal').scrollTop = 0;
+    }
+
+    function backToGrid() {
+      document.getElementById('grid-view').style.display = 'block';
+      document.getElementById('detail-view').style.display = 'none';
+      document.getElementById('grid-gallery-modal').scrollTop = 0;
+    }
+
+    function closeGridGallery() {
+      document.getElementById('grid-gallery-modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function handleGridBgClick(e) {
+      if (e.target === document.getElementById('grid-gallery-modal')) closeGridGallery();
+    }
+
+    function openPantsGallery()  { openGridGallery(pantsImages, 'מכנסיים'); }
+    function openTshirtGallery() { openGridGallery(tshirtImages, 'חולצות'); }
+    function openGallery()       { openGridGallery(suitImages, 'חליפות'); }
+    function openShoeGallery()   { openGridGallery(shoeImages, 'נעליים'); }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeGridGallery();
+    });
+  </script>
+</body>
+</html>
