@@ -1136,7 +1136,7 @@
       });
     }
 
-    function sendOrderWA() {
+    async function sendOrderWA() {
       if (!currentItem) return;
       const note = document.getElementById('order-note').value.trim();
       const imgUrl = 'https://44-mens-boutique.github.io/44-mens-boutique/' + currentItem.src;
@@ -1144,11 +1144,25 @@
         'מחיר: ' + currentItem.price + '\n';
       if (selectedSize) msg += 'מידה: *' + selectedSize + '*\n';
       if (note) msg += 'הערה: ' + note + '\n';
-      msg += 'אשמח לדעת מה המלאי 🙏\n' + imgUrl;
+      msg += 'אשמח לדעת מה המלאי 🙏';
 
-      // שמירת מצב הגלריה לפני המעבר לוואטסאפ
       sessionStorage.setItem('waReturnGallery', currentGalleryKey);
 
+      // שיתוף עם תמונה מצורפת דרך תפריט הטלפון
+      if (navigator.canShare && navigator.share) {
+        try {
+          const res = await fetch(imgUrl);
+          const blob = await res.blob();
+          const fileName = currentItem.src.split('/').pop();
+          const file = new File([blob], fileName, { type: blob.type });
+          if (navigator.canShare({ files: [file], text: msg })) {
+            await navigator.share({ files: [file], text: msg });
+            return;
+          }
+        } catch(e) { /* fallback below */ }
+      }
+
+      // fallback למכשירים ללא Web Share API
       const url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
       const a = document.createElement('a');
       a.href = url;
