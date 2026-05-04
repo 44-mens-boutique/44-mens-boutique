@@ -748,9 +748,36 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(212,175,55,0.5);
     }
+
+    .announcement-bar {
+      background-color: #d4af37;
+      color: #111;
+      text-align: center;
+      padding: 8px 10px;
+      font-size: 15px;
+      font-weight: bold;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 768px) {
+      .announcement-bar {
+        font-size: 13px;
+        padding: 6px 8px;
+      }
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- ── ANNOUNCEMENT BAR ── -->
+  <div class="announcement-bar">
+    <span>🚚 משלוחים מהירים לכל חלקי הארץ | להזמנות ישירות בוואטסאפ 📱</span>
+  </div>
 
   <!-- ── HERO ── -->
   <div class="hero-section">
