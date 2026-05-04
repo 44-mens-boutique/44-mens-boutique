@@ -1139,9 +1139,7 @@
     function sendOrderWA() {
       if (!currentItem) return;
       const note = document.getElementById('order-note').value.trim();
-      const rawImg = 'https://raw.githubusercontent.com/44-mens-boutique/44-mens-boutique/main/' + currentItem.src;
-      let msg = rawImg + '\n' +
-        'היי! ראיתי את *' + currentItem.name + '* באתר 44 Men\'s Boutique 🔥\n' +
+      let msg = 'היי! ראיתי את *' + currentItem.name + '* באתר 44 Men\'s Boutique 🔥\n' +
         'מחיר: ' + currentItem.price + '\n';
       if (selectedSize) msg += 'מידה: *' + selectedSize + '*\n';
       if (note) msg += 'הערה: ' + note + '\n';
