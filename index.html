@@ -749,6 +749,61 @@
       box-shadow: 0 8px 20px rgba(212,175,55,0.5);
     }
 
+    .order-options {
+      width: 100%;
+      max-width: 380px;
+      margin: 0.8rem 0;
+    }
+
+    .size-label {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .size-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .size-btn {
+      padding: 0.4rem 0.85rem;
+      border: 1.5px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .size-btn.selected {
+      background: var(--gold);
+      color: #000;
+    }
+
+    .order-note-input {
+      width: 100%;
+      padding: 0.6rem 0.9rem;
+      border: 1.5px solid #444;
+      background: #1a1a1a;
+      color: var(--white);
+      border-radius: 10px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.95rem;
+      direction: rtl;
+      outline: none;
+    }
+
+    .order-note-input:focus {
+      border-color: var(--gold);
+    }
+
     .announcement-bar {
       background-color: #d4af37;
       color: #111;
@@ -974,9 +1029,16 @@
         <img id="detail-img" src="" alt="" />
       </div>
       <div id="detail-price" style="color:var(--gold);font-weight:800;font-size:1.3rem;"></div>
-      <a id="detail-wa" href="" target="_blank" class="gallery-wa-btn">
-        💬 צור קשר לבדיקת מלאי
-      </a>
+
+      <div class="order-options">
+        <div class="size-label">בחר מידה:</div>
+        <div id="size-buttons" class="size-buttons"></div>
+        <input type="text" id="order-note" class="order-note-input" placeholder="צבע / הערה (אופציונלי)" />
+      </div>
+
+      <button onclick="sendOrderWA()" class="gallery-wa-btn">
+        📲 הזמן בוואטסאפ
+      </button>
     </div>
   </div>
 
@@ -1039,17 +1101,42 @@
 
     const WA_NUMBER = '972504375644';
     let currentGridImages = [];
+    let currentItem = null;
+    let selectedSize = '';
+    let currentSizeList = [];
 
-    function buildWaLink(itemName, imgSrc, price) {
-      const rawImg = imgSrc
-        ? 'https://raw.githubusercontent.com/44-mens-boutique/44-mens-boutique/main/' + imgSrc
-        : '';
-      const msg = encodeURIComponent(
-        (rawImg ? rawImg + '\n' : '') +
-        'היי! ראיתי את *' + itemName + '* באתר 44 Men\'s Boutique 🔥\n' +
-        'מעוניין לדעת מה המלאי שקיים 🙏'
-      );
-      return 'https://wa.me/' + WA_NUMBER + '?text=' + msg;
+    const SIZES_CLOTHING = ['S', 'M', 'L', 'XL', 'XXL'];
+    const SIZES_PANTS    = ['28', '30', '32', '34', '36', '38'];
+    const SIZES_SHOES    = ['40', '41', '42', '43', '44', '45', '46'];
+
+    function buildSizeButtons(sizes) {
+      selectedSize = '';
+      const container = document.getElementById('size-buttons');
+      container.innerHTML = '';
+      sizes.forEach(function(s) {
+        const btn = document.createElement('button');
+        btn.className = 'size-btn';
+        btn.textContent = s;
+        btn.onclick = function() {
+          document.querySelectorAll('.size-btn').forEach(function(b) { b.classList.remove('selected'); });
+          btn.classList.add('selected');
+          selectedSize = s;
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    function sendOrderWA() {
+      if (!currentItem) return;
+      const note = document.getElementById('order-note').value.trim();
+      const rawImg = 'https://raw.githubusercontent.com/44-mens-boutique/44-mens-boutique/main/' + currentItem.src;
+      let msg = rawImg + '\n' +
+        'היי! ראיתי את *' + currentItem.name + '* באתר 44 Men\'s Boutique 🔥\n' +
+        'מחיר: ' + currentItem.price + '\n';
+      if (selectedSize) msg += 'מידה: *' + selectedSize + '*\n';
+      if (note) msg += 'הערה: ' + note + '\n';
+      msg += 'אשמח לדעת מה המלאי 🙏';
+      window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
     }
 
     function openGridGallery(images, title) {
@@ -1077,9 +1164,11 @@
 
     function showDetail(index) {
       const item = currentGridImages[index];
+      currentItem = item;
       document.getElementById('detail-img').src = item.src;
       document.getElementById('detail-price').textContent = item.price;
-      document.getElementById('detail-wa').href = buildWaLink(item.name, item.src, item.price);
+      document.getElementById('order-note').value = '';
+      buildSizeButtons(currentSizeList);
       document.getElementById('grid-view').style.display = 'none';
       document.getElementById('detail-view').style.display = 'flex';
       document.getElementById('grid-gallery-modal').scrollTop = 0;
@@ -1100,12 +1189,12 @@
       if (e.target === document.getElementById('grid-gallery-modal')) closeGridGallery();
     }
 
-    function openShortsGallery()  { openGridGallery(shortsImages, 'מכנסיים וג\'ינסים קצרים'); }
-    function openJeansGallery()   { openGridGallery(jeansImages, 'ג\'ינסים'); }
-    function openPantsGallery()  { openGridGallery(pantsImages, 'מכנסיים'); }
-    function openTshirtGallery() { openGridGallery(tshirtImages, 'חולצות'); }
-    function openGallery()       { openGridGallery(suitImages, 'חליפות'); }
-    function openShoeGallery()   { openGridGallery(shoeImages, 'נעליים'); }
+    function openShortsGallery()  { currentSizeList = SIZES_CLOTHING; openGridGallery(shortsImages, 'מכנסיים וג\'ינסים קצרים'); }
+    function openJeansGallery()   { currentSizeList = SIZES_PANTS;    openGridGallery(jeansImages, 'ג\'ינסים'); }
+    function openPantsGallery()   { currentSizeList = SIZES_PANTS;    openGridGallery(pantsImages, 'מכנסיים'); }
+    function openTshirtGallery()  { currentSizeList = SIZES_CLOTHING; openGridGallery(tshirtImages, 'חולצות'); }
+    function openGallery()        { currentSizeList = SIZES_CLOTHING; openGridGallery(suitImages, 'חליפות'); }
+    function openShoeGallery()    { currentSizeList = SIZES_SHOES;    openGridGallery(shoeImages, 'נעליים'); }
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeGridGallery();
