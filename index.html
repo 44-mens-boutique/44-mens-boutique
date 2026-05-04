@@ -1136,10 +1136,22 @@
       });
     }
 
-    async function sendOrderWA() {
+    let currentItemFile = null;
+
+    async function prefetchItemImage(src) {
+      currentItemFile = null;
+      try {
+        const imgUrl = 'https://44-mens-boutique.github.io/44-mens-boutique/' + src;
+        const res = await fetch(imgUrl);
+        const blob = await res.blob();
+        const fileName = src.split('/').pop();
+        currentItemFile = new File([blob], fileName, { type: blob.type });
+      } catch(e) {}
+    }
+
+    function sendOrderWA() {
       if (!currentItem) return;
       const note = document.getElementById('order-note').value.trim();
-      const imgUrl = 'https://44-mens-boutique.github.io/44-mens-boutique/' + currentItem.src;
       let msg = 'היי! ראיתי את *' + currentItem.name + '* באתר 44 Men\'s Boutique 🔥\n' +
         'מחיר: ' + currentItem.price + '\n';
       if (selectedSize) msg += 'מידה: *' + selectedSize + '*\n';
@@ -1148,18 +1160,11 @@
 
       sessionStorage.setItem('waReturnGallery', currentGalleryKey);
 
-      // שיתוף עם תמונה מצורפת דרך תפריט הטלפון
-      if (navigator.canShare && navigator.share) {
-        try {
-          const res = await fetch(imgUrl);
-          const blob = await res.blob();
-          const fileName = currentItem.src.split('/').pop();
-          const file = new File([blob], fileName, { type: blob.type });
-          if (navigator.canShare({ files: [file], text: msg })) {
-            await navigator.share({ files: [file], text: msg });
-            return;
-          }
-        } catch(e) { /* fallback below */ }
+      // שיתוף עם תמונה — התמונה כבר טעונה מראש, ללא await
+      if (navigator.canShare && navigator.share && currentItemFile &&
+          navigator.canShare({ files: [currentItemFile], text: msg })) {
+        navigator.share({ files: [currentItemFile], text: msg });
+        return;
       }
 
       // fallback למכשירים ללא Web Share API
@@ -1202,6 +1207,7 @@
       document.getElementById('detail-price').textContent = item.price;
       document.getElementById('order-note').value = '';
       buildSizeButtons(currentSizeList);
+      prefetchItemImage(item.src);
       document.getElementById('grid-view').style.display = 'none';
       document.getElementById('detail-view').style.display = 'flex';
       document.getElementById('grid-gallery-modal').scrollTop = 0;
