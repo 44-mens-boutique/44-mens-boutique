@@ -1104,10 +1104,20 @@
     let currentItem = null;
     let selectedSize = '';
     let currentSizeList = [];
+    let currentGalleryKey = '';
 
     const SIZES_CLOTHING = ['S', 'M', 'L', 'XL', 'XXL'];
     const SIZES_PANTS    = ['28', '30', '32', '34', '36', '38'];
     const SIZES_SHOES    = ['40', '41', '42', '43', '44', '45', '46'];
+
+    const GALLERY_REGISTRY = {
+      tshirts: { getImages: function() { return tshirtImages; }, title: 'חולצות',                   sizes: SIZES_CLOTHING },
+      pants:   { getImages: function() { return pantsImages;  }, title: 'מכנסיים',                  sizes: SIZES_PANTS    },
+      jeans:   { getImages: function() { return jeansImages;  }, title: 'ג\'ינסים',                  sizes: SIZES_PANTS    },
+      shorts:  { getImages: function() { return shortsImages; }, title: 'מכנסיים וג\'ינסים קצרים',  sizes: SIZES_CLOTHING },
+      suits:   { getImages: function() { return suitImages;   }, title: 'חליפות',                   sizes: SIZES_CLOTHING },
+      shoes:   { getImages: function() { return shoeImages;   }, title: 'נעליים',                   sizes: SIZES_SHOES    },
+    };
 
     function buildSizeButtons(sizes) {
       selectedSize = '';
@@ -1136,7 +1146,17 @@
       if (selectedSize) msg += 'מידה: *' + selectedSize + '*\n';
       if (note) msg += 'הערה: ' + note + '\n';
       msg += 'אשמח לדעת מה המלאי 🙏';
-      window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+
+      // שמירת מצב הגלריה לפני המעבר לוואטסאפ
+      sessionStorage.setItem('waReturnGallery', currentGalleryKey);
+
+      const url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
+      const a = document.createElement('a');
+      a.href = url;
+      a.rel = 'noopener noreferrer';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
 
     function openGridGallery(images, title) {
@@ -1189,12 +1209,24 @@
       if (e.target === document.getElementById('grid-gallery-modal')) closeGridGallery();
     }
 
-    function openShortsGallery()  { currentSizeList = SIZES_CLOTHING; openGridGallery(shortsImages, 'מכנסיים וג\'ינסים קצרים'); }
-    function openJeansGallery()   { currentSizeList = SIZES_PANTS;    openGridGallery(jeansImages, 'ג\'ינסים'); }
-    function openPantsGallery()   { currentSizeList = SIZES_PANTS;    openGridGallery(pantsImages, 'מכנסיים'); }
-    function openTshirtGallery()  { currentSizeList = SIZES_CLOTHING; openGridGallery(tshirtImages, 'חולצות'); }
-    function openGallery()        { currentSizeList = SIZES_CLOTHING; openGridGallery(suitImages, 'חליפות'); }
-    function openShoeGallery()    { currentSizeList = SIZES_SHOES;    openGridGallery(shoeImages, 'נעליים'); }
+    function openShortsGallery()  { currentGalleryKey = 'shorts';  currentSizeList = SIZES_CLOTHING; openGridGallery(shortsImages, 'מכנסיים וג\'ינסים קצרים'); }
+    function openJeansGallery()   { currentGalleryKey = 'jeans';   currentSizeList = SIZES_PANTS;    openGridGallery(jeansImages, 'ג\'ינסים'); }
+    function openPantsGallery()   { currentGalleryKey = 'pants';   currentSizeList = SIZES_PANTS;    openGridGallery(pantsImages, 'מכנסיים'); }
+    function openTshirtGallery()  { currentGalleryKey = 'tshirts'; currentSizeList = SIZES_CLOTHING; openGridGallery(tshirtImages, 'חולצות'); }
+    function openGallery()        { currentGalleryKey = 'suits';   currentSizeList = SIZES_CLOTHING; openGridGallery(suitImages, 'חליפות'); }
+    function openShoeGallery()    { currentGalleryKey = 'shoes';   currentSizeList = SIZES_SHOES;    openGridGallery(shoeImages, 'נעליים'); }
+
+    // שחזור גלריה כשחוזרים מוואטסאפ
+    window.addEventListener('pageshow', function() {
+      const galleryKey = sessionStorage.getItem('waReturnGallery');
+      if (!galleryKey) return;
+      sessionStorage.removeItem('waReturnGallery');
+      const entry = GALLERY_REGISTRY[galleryKey];
+      if (!entry) return;
+      currentGalleryKey = galleryKey;
+      currentSizeList = entry.sizes;
+      openGridGallery(entry.getImages(), entry.title);
+    });
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeGridGallery();
