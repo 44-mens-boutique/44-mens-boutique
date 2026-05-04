@@ -498,6 +498,9 @@
       overflow: hidden;
       padding: 0;
     }
+    .grid-gallery-modal.detail-mode .gallery-close {
+      display: none;
+    }
 
     .gallery-close {
       position: fixed;
@@ -1050,7 +1053,7 @@
 
     <!-- תצוגת פריט בודד -->
     <div id="detail-view" class="detail-view-container" style="display:none">
-      <button class="back-btn" onclick="backToGrid()">→ חזרה לכל הפריטים</button>
+      <button class="back-btn" onclick="backToGrid()">→ חזרה לקולקציה</button>
       <div class="detail-img-wrap">
         <img id="detail-img" src="" alt="" />
       </div>
