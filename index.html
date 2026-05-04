@@ -601,6 +601,7 @@
       flex: 1;
       min-height: 0;
       width: 100%;
+      position: relative;
     }
     .detail-img-wrap img {
       width: 100%;
@@ -610,6 +611,28 @@
       box-shadow: 0 0 60px rgba(201,168,76,0.2);
       display: block;
     }
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.45);
+      border: 1.5px solid rgba(201,168,76,0.5);
+      color: var(--gold);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+    .nav-arrow:hover { background: rgba(201,168,76,0.25); }
+    .nav-arrow.prev { right: 8px; }
+    .nav-arrow.next { left: 8px; }
+    .nav-arrow:disabled { opacity: 0.2; cursor: default; }
 
     .gallery-wa-btn {
       display: flex;
@@ -1056,6 +1079,8 @@
       <button class="back-btn" onclick="backToGrid()">→ חזרה לקולקציה</button>
       <div class="detail-img-wrap">
         <img id="detail-img" src="" alt="" />
+        <button class="nav-arrow next" id="nav-next" onclick="navigateDetail(-1)">‹</button>
+        <button class="nav-arrow prev" id="nav-prev" onclick="navigateDetail(1)">›</button>
       </div>
       <div id="detail-price" style="color:var(--gold);font-weight:800;font-size:1.2rem;flex-shrink:0;"></div>
 
@@ -1208,17 +1233,27 @@
       document.body.style.overflow = 'hidden';
     }
 
+    let currentDetailIndex = 0;
+
     function showDetail(index) {
+      currentDetailIndex = index;
       const item = currentGridImages[index];
       currentItem = item;
       document.getElementById('detail-img').src = item.src;
       document.getElementById('detail-price').textContent = item.price;
       buildSizeButtons(currentSizeList);
+      document.getElementById('nav-prev').disabled = (index >= currentGridImages.length - 1);
+      document.getElementById('nav-next').disabled = (index <= 0);
       document.getElementById('grid-view').style.display = 'none';
       document.getElementById('detail-view').style.display = 'flex';
       const modal = document.getElementById('grid-gallery-modal');
       modal.classList.add('detail-mode');
       modal.scrollTop = 0;
+    }
+
+    function navigateDetail(dir) {
+      const next = currentDetailIndex + dir;
+      if (next >= 0 && next < currentGridImages.length) showDetail(next);
     }
 
     function backToGrid() {
@@ -1259,7 +1294,21 @@
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeGridGallery();
+      if (e.key === 'ArrowLeft')  navigateDetail(-1);
+      if (e.key === 'ArrowRight') navigateDetail(1);
     });
+
+    // סווייפ לנייד
+    let touchStartX = 0;
+    document.getElementById('grid-gallery-modal').addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    document.getElementById('grid-gallery-modal').addEventListener('touchend', function(e) {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50 && document.getElementById('detail-view').style.display !== 'none') {
+        navigateDetail(diff > 0 ? -1 : 1);
+      }
+    }, { passive: true });
   </script>
 </body>
 </html>
