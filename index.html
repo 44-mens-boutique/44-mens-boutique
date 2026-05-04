@@ -1136,38 +1136,18 @@
       });
     }
 
-    let currentItemFile = null;
-
-    async function prefetchItemImage(src) {
-      currentItemFile = null;
-      try {
-        const imgUrl = 'https://44-mens-boutique.github.io/44-mens-boutique/' + src;
-        const res = await fetch(imgUrl);
-        const blob = await res.blob();
-        const fileName = src.split('/').pop();
-        currentItemFile = new File([blob], fileName, { type: blob.type });
-      } catch(e) {}
-    }
-
     function sendOrderWA() {
       if (!currentItem) return;
       const note = document.getElementById('order-note').value.trim();
+      const imgUrl = 'https://44-mens-boutique.github.io/44-mens-boutique/' + currentItem.src;
       let msg = 'היי! ראיתי את *' + currentItem.name + '* באתר 44 Men\'s Boutique 🔥\n' +
         'מחיר: ' + currentItem.price + '\n';
       if (selectedSize) msg += 'מידה: *' + selectedSize + '*\n';
       if (note) msg += 'הערה: ' + note + '\n';
-      msg += 'אשמח לדעת מה המלאי 🙏';
+      msg += 'אשמח לדעת מה המלאי 🙏\n' + imgUrl;
 
       sessionStorage.setItem('waReturnGallery', currentGalleryKey);
 
-      // שיתוף עם תמונה — התמונה כבר טעונה מראש, ללא await
-      if (navigator.canShare && navigator.share && currentItemFile &&
-          navigator.canShare({ files: [currentItemFile], text: msg })) {
-        navigator.share({ files: [currentItemFile], text: msg });
-        return;
-      }
-
-      // fallback למכשירים ללא Web Share API
       const url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
       const a = document.createElement('a');
       a.href = url;
@@ -1207,7 +1187,6 @@
       document.getElementById('detail-price').textContent = item.price;
       document.getElementById('order-note').value = '';
       buildSizeButtons(currentSizeList);
-      prefetchItemImage(item.src);
       document.getElementById('grid-view').style.display = 'none';
       document.getElementById('detail-view').style.display = 'flex';
       document.getElementById('grid-gallery-modal').scrollTop = 0;
