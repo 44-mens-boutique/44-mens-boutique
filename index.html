@@ -1139,11 +1139,12 @@
     function sendOrderWA() {
       if (!currentItem) return;
       const note = document.getElementById('order-note').value.trim();
+      const imgUrl = 'https://44-mens-boutique.github.io/44-mens-boutique/' + currentItem.src;
       let msg = 'היי! ראיתי את *' + currentItem.name + '* באתר 44 Men\'s Boutique 🔥\n' +
         'מחיר: ' + currentItem.price + '\n';
       if (selectedSize) msg += 'מידה: *' + selectedSize + '*\n';
       if (note) msg += 'הערה: ' + note + '\n';
-      msg += 'אשמח לדעת מה המלאי 🙏';
+      msg += 'אשמח לדעת מה המלאי 🙏\n' + imgUrl;
 
       // שמירת מצב הגלריה לפני המעבר לוואטסאפ
       sessionStorage.setItem('waReturnGallery', currentGalleryKey);
