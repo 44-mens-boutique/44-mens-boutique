@@ -448,12 +448,20 @@
     /* ── MOBILE ── */
     @media (max-width: 480px) {
       .about-grid {
-        flex-direction: column;
-        align-items: center;
+        flex-wrap: nowrap;
+        gap: 0.6rem;
       }
       .about-card {
-        width: 100%;
-        max-width: 300px;
+        flex: 1 1 0;
+        min-width: 0;
+        max-width: none;
+        padding: 1rem 0.5rem;
+      }
+      .about-card h3 {
+        font-size: 0.8rem;
+      }
+      .about-card p {
+        font-size: 0.72rem;
       }
     }
 
@@ -849,7 +857,7 @@
 
   <!-- ── ANNOUNCEMENT BAR ── -->
   <div class="announcement-bar">
-    <span>🚚 משלוחים מהירים לכל חלקי הארץ | להזמנות ישירות בוואטסאפ 📱</span>
+    <span>🚚 משלוחים מהירים לכל הארץ</span>
   </div>
 
   <!-- ── HERO ── -->
