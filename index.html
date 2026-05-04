@@ -570,11 +570,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
       width: 100%;
       max-width: 500px;
       margin: 0 auto;
-      padding: 2.8rem 1rem 0.8rem;
+      padding: 2.5rem 1rem 0.6rem;
       height: 100%;
       overflow: hidden;
     }
@@ -1059,7 +1059,6 @@
       <div class="order-options">
         <div class="size-label">בחר מידה:</div>
         <div id="size-buttons" class="size-buttons"></div>
-        <input type="text" id="order-note" class="order-note-input" placeholder="צבע / הערה (אופציונלי)" />
       </div>
 
       <button onclick="sendOrderWA()" class="gallery-wa-btn">
@@ -1164,7 +1163,7 @@
 
     function sendOrderWA() {
       if (!currentItem) return;
-      const note = document.getElementById('order-note').value.trim();
+      const note = '';
       const imgUrl = 'https://44-mens-boutique.github.io/44-mens-boutique/' + currentItem.src;
       let msg = 'היי! ראיתי את *' + currentItem.name + '* באתר 44 Men\'s Boutique 🔥\n' +
         'מחיר: ' + currentItem.price + '\n';
@@ -1211,7 +1210,6 @@
       currentItem = item;
       document.getElementById('detail-img').src = item.src;
       document.getElementById('detail-price').textContent = item.price;
-      document.getElementById('order-note').value = '';
       buildSizeButtons(currentSizeList);
       document.getElementById('grid-view').style.display = 'none';
       document.getElementById('detail-view').style.display = 'flex';
