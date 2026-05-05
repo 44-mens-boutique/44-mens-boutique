@@ -976,8 +976,14 @@
       display: inline-flex;
       white-space: nowrap;
       will-change: transform;
+      direction: ltr;
+      animation: marquee-scroll 40s linear infinite;
     }
     .marquee-sep { margin: 0 1.2rem; opacity: 0.35; }
+    @keyframes marquee-scroll {
+      from { transform: translate3d(0, 0, 0); }
+      to   { transform: translate3d(-50%, 0, 0); }
+    }
 
     /* ── LOGO SHIMMER ── */
     @keyframes gold-shimmer {
@@ -1493,31 +1499,6 @@
       });
     })();
 
-    // ── SEAMLESS MARQUEE (JS) ──
-    (function() {
-      function initMarquee() {
-        var track = document.querySelector('.marquee-track');
-        if (!track) return;
-        var singleW = track.scrollWidth / 2; // HTML already has 2 copies
-        if (singleW <= 0) return;
-        track.innerHTML += track.innerHTML;  // now 4 copies — plenty of buffer
-        var pos = 0;
-        var SPEED = 0.38; // px/frame — קצב קריא
-        function tick() {
-          pos -= SPEED;
-          if (pos <= -singleW) pos += singleW;
-          track.style.transform = 'translateX(' + pos + 'px)';
-          requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      }
-      // Wait for fonts so width measurement is accurate
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(initMarquee);
-      } else {
-        window.addEventListener('load', initMarquee);
-      }
-    })();
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeGridGallery();
