@@ -920,13 +920,137 @@
       }
     }
 
+    /* ── FLOATING NAV ── */
+    .floating-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 2000;
+      background: rgba(10,10,10,0.93);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,168,76,0.22);
+      padding: 0.55rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transform: translateY(-110%);
+      transition: transform 0.38s cubic-bezier(0.4,0,0.2,1);
+    }
+    .floating-nav.visible { transform: translateY(0); }
+    .nav-logo {
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+    }
+    .nav-wa-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: linear-gradient(135deg, #25d366, #1ebe5d);
+      color: #fff;
+      padding: 0.38rem 1rem;
+      border-radius: 50px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-wa-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(37,211,102,0.45);
+    }
+
+    /* ── MARQUEE ── */
+    .announcement-bar { overflow: hidden; padding-left: 0; padding-right: 0; }
+    .marquee-track {
+      display: inline-flex;
+      white-space: nowrap;
+      animation: marquee-scroll 28s linear infinite;
+    }
+    .marquee-sep { margin: 0 1.2rem; opacity: 0.35; }
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── LOGO SHIMMER ── */
+    @keyframes gold-shimmer {
+      0%   { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
+    .logo-44 {
+      background: linear-gradient(90deg, #c9a84c 15%, #fff6c0 40%, #f5d060 55%, #c9a84c 80%);
+      background-size: 250% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gold-shimmer 2.8s linear infinite;
+    }
+    .logo-text {
+      background: linear-gradient(90deg, #c9a84c 15%, #fff6c0 40%, #f5d060 55%, #c9a84c 80%);
+      background-size: 250% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gold-shimmer 2.8s linear infinite;
+      animation-delay: 0.6s;
+    }
+
+    /* ── SCROLL FADE-UP ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(38px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up:nth-child(1) { transition-delay: 0.05s; }
+    .fade-up:nth-child(2) { transition-delay: 0.14s; }
+    .fade-up:nth-child(3) { transition-delay: 0.23s; }
+    .fade-up:nth-child(4) { transition-delay: 0.32s; }
+    .fade-up:nth-child(5) { transition-delay: 0.14s; }
+    .fade-up:nth-child(6) { transition-delay: 0.23s; }
+    .fade-up:nth-child(7) { transition-delay: 0.05s; }
+    /* restore hover transforms after fade-in */
+    .about-card.fade-up.visible:hover   { transform: translateY(-4px); }
+    .product-card.fade-up.visible:hover { transform: translateY(-5px); }
+
   </style>
 </head>
 <body>
 
+  <!-- ── FLOATING NAV ── -->
+  <nav id="floating-nav" class="floating-nav">
+    <span class="nav-logo">44 MEN'S BOUTIQUE</span>
+    <a href="https://wa.me/972504375644?text=היי! ראיתי את האתר שלכם 👋" target="_blank" class="nav-wa-btn">
+      📲 הזמן עכשיו
+    </a>
+  </nav>
+
   <!-- ── ANNOUNCEMENT BAR ── -->
   <div class="announcement-bar">
-    <span>🚚 משלוחים מהירים לכל הארץ</span>
+    <div class="marquee-track">
+      <span>🚚 משלוחים מהירים לכל הארץ</span>
+      <span class="marquee-sep">◆</span>
+      <span>💳 תשלום בביט ובפייפל</span>
+      <span class="marquee-sep">◆</span>
+      <span>🔥 קולקציית קיץ 2026 – עכשיו זמינה</span>
+      <span class="marquee-sep">◆</span>
+      <span>🖤 44 Men's Boutique – ראשון לציון</span>
+      <span class="marquee-sep">◆</span>
+      <span>🚚 משלוחים מהירים לכל הארץ</span>
+      <span class="marquee-sep">◆</span>
+      <span>💳 תשלום בביט ובפייפל</span>
+      <span class="marquee-sep">◆</span>
+      <span>🔥 קולקציית קיץ 2026 – עכשיו זמינה</span>
+      <span class="marquee-sep">◆</span>
+      <span>🖤 44 Men's Boutique – ראשון לציון</span>
+      <span class="marquee-sep">◆</span>
+    </div>
   </div>
 
   <!-- ── HERO ── -->
@@ -945,15 +1069,15 @@
   <!-- ── ABOUT ── -->
   <section class="about">
     <div class="about-grid">
-      <div class="about-card">
+      <div class="about-card fade-up">
         <h3>איכות פרימיום</h3>
         <p>בגדים מבדים איכותיים שנראים ומרגישים יוקרתיים</p>
       </div>
-      <div class="about-card">
+      <div class="about-card fade-up">
         <h3>סגנון ייחודי</h3>
         <p>קולקציות מעוצבות לגבר המודרני</p>
       </div>
-      <div class="about-card">
+      <div class="about-card fade-up">
         <h3>עסק של מילואמניק</h3>
         <p>תומכים במילואימניקים ומשפחותיהם</p>
       </div>
@@ -962,14 +1086,14 @@
 
   <!-- ── PRODUCTS ── -->
   <section class="products" id="products">
-    <div class="section-title">
+    <div class="section-title fade-up">
       <h2>ה<span>קטלוג</span> שלנו</h2>
       <div class="gold-line"></div>
     </div>
     <div class="products-grid">
 
       <!-- חולצות -->
-      <div class="product-card" onclick="openTshirtGallery()" style="cursor:pointer;">
+      <div class="product-card fade-up" onclick="openTshirtGallery()" style="cursor:pointer;">
         <div class="product-img">
           <img src="images/tshirt-memo-god.jpg" alt="חולצות" loading="lazy" />
           <div class="gallery-hint">9 פריטים לצפייה</div>
@@ -982,7 +1106,7 @@
       </div>
 
       <!-- מכנסיים -->
-      <div class="product-card" onclick="openPantsGallery()" style="cursor:pointer;">
+      <div class="product-card fade-up" onclick="openPantsGallery()" style="cursor:pointer;">
         <div class="product-img">
           <img src="images/pants-placeholder.jpg" alt="מכנסיים" loading="lazy" />
           <div class="gallery-hint">קולקציה בקרוב</div>
@@ -995,7 +1119,7 @@
       </div>
 
       <!-- ג'ינסים -->
-      <div class="product-card" onclick="openJeansGallery()" style="cursor:pointer;">
+      <div class="product-card fade-up" onclick="openJeansGallery()" style="cursor:pointer;">
         <div class="product-img">
           <img src="images/jeans-ripped-blue.jpg" alt="ג'ינסים" loading="lazy" />
           <div class="gallery-hint">1 פריטים לצפייה</div>
@@ -1008,7 +1132,7 @@
       </div>
 
       <!-- נעליים -->
-      <div class="product-card" onclick="openShoeGallery()" style="cursor:pointer;">
+      <div class="product-card fade-up" onclick="openShoeGallery()" style="cursor:pointer;">
         <div class="product-img">
           <img src="images/shoe-qoqll-bw.jpg" alt="נעליים" loading="lazy" />
           <div class="gallery-hint">6 פריטים לצפייה</div>
@@ -1021,7 +1145,7 @@
       </div>
 
       <!-- אקססוריז -->
-      <div class="product-card">
+      <div class="product-card fade-up">
         <div class="product-img">
           <img src="images/accessories-placeholder.jpg" alt="אקססוריז" loading="lazy" />
           <div class="gallery-hint">בקרוב</div>
@@ -1034,7 +1158,7 @@
       </div>
 
       <!-- מכנסיים וג'ינסים קצרים -->
-      <div class="product-card" onclick="openShortsGallery()" style="cursor:pointer;">
+      <div class="product-card fade-up" onclick="openShortsGallery()" style="cursor:pointer;">
         <div class="product-img">
           <img src="images/shorts-jeans-blue.jpg" alt="מכנסיים קצרים" loading="lazy" />
           <div class="gallery-hint">13 פריטים לצפייה</div>
@@ -1047,7 +1171,7 @@
       </div>
 
       <!-- מוצר 7 -->
-      <div class="product-card" onclick="openGallery()" style="cursor:pointer;">
+      <div class="product-card fade-up" onclick="openGallery()" style="cursor:pointer;">
         <div class="product-img">
           <img src="images/suit-set-black-pool.jpg" alt="חליפות" loading="lazy" />
           <div class="gallery-hint">5 פריטים לצפייה</div>
@@ -1331,6 +1455,39 @@
       currentSizeList = entry.sizes;
       openGridGallery(entry.getImages(), entry.title);
     });
+
+    // ── FLOATING NAV + PARALLAX ──
+    (function() {
+      var nav = document.getElementById('floating-nav');
+      var heroEl = document.querySelector('.hero-section');
+      function onScroll() {
+        var threshold = heroEl ? heroEl.offsetHeight * 0.55 : 280;
+        if (window.scrollY > threshold) {
+          nav.classList.add('visible');
+        } else {
+          nav.classList.remove('visible');
+        }
+        if (heroEl) {
+          heroEl.style.backgroundPositionY = 'calc(50% + ' + (window.scrollY * 0.28) + 'px)';
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+
+    // ── SCROLL FADE-UP ANIMATIONS ──
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.fade-up').forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeGridGallery();
