@@ -738,6 +738,85 @@
     .si-tt  { background: #010101; color: #fff; border: 1.5px solid rgba(255,255,255,0.15); }
     .si-tt:hover  { box-shadow: 0 6px 22px rgba(105,201,208,0.5); }
 
+    /* ── CATEGORIES OVERVIEW MODAL ── */
+    .categories-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.97);
+      z-index: 8000;
+      padding: 1rem 1rem 1.2rem;
+      flex-direction: column;
+    }
+    .categories-modal.open { display: flex; }
+    .cat-modal-inner {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .cat-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.7rem;
+      flex-shrink: 0;
+    }
+    .cat-modal-title {
+      color: var(--gold);
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+    .cat-modal-close {
+      background: var(--dark2);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--white);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cat-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 0.45rem;
+      min-height: 0;
+    }
+    .cat-card {
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      border: 1px solid rgba(201,168,76,0.15);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .cat-card:active { border-color: var(--gold); transform: scale(0.97); }
+    .cat-card:nth-child(7) { grid-column: 2; }
+    .cat-card img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .cat-card-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.88));
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 0.7rem 0.2rem 0.25rem;
+    }
+    .cat-count {
+      color: var(--gold);
+      font-size: 0.62rem;
+      margin-right: 0.2rem;
+    }
+
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
@@ -1072,7 +1151,7 @@
         <span class="logo-text">MEN'S BOUTIQUE</span>
       </div>
       <h1 class="slogan">תתלבש כמו גבר</h1>
-      <a href="#products" class="cta-button">צפה בקולקציה</a>
+      <button class="cta-button" onclick="openCategoriesModal()">צפה בקולקציה</button>
     </div>
   </div>
 
@@ -1240,6 +1319,46 @@
   <footer>
     <p>© 2026 <span>44 Men's Boutique</span> • ראשון לציון • כל הזכויות שמורות</p>
   </footer>
+
+  <!-- ── CATEGORIES OVERVIEW MODAL ── -->
+  <div id="categories-modal" class="categories-modal" onclick="handleCatBgClick(event)">
+    <div class="cat-modal-inner">
+      <div class="cat-modal-header">
+        <span class="cat-modal-title">הקטגוריות שלנו</span>
+        <button class="cat-modal-close" onclick="closeCategoriesModal()">✕</button>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-card" onclick="openCatAndClose('tshirts')">
+          <img src="images/tshirt-memo-god.jpg" alt="חולצות" loading="lazy">
+          <div class="cat-card-label">חולצות <span class="cat-count">9</span></div>
+        </div>
+        <div class="cat-card" onclick="openCatAndClose('pants')">
+          <img src="images/pants-placeholder.jpg" alt="מכנסיים" loading="lazy">
+          <div class="cat-card-label">מכנסיים</div>
+        </div>
+        <div class="cat-card" onclick="openCatAndClose('jeans')">
+          <img src="images/jeans-ripped-blue.jpg" alt="ג'ינסים" loading="lazy">
+          <div class="cat-card-label">ג'ינסים <span class="cat-count">1</span></div>
+        </div>
+        <div class="cat-card" onclick="openCatAndClose('shoes')">
+          <img src="images/shoe-qoqll-bw.jpg" alt="נעליים" loading="lazy">
+          <div class="cat-card-label">נעליים <span class="cat-count">6</span></div>
+        </div>
+        <div class="cat-card">
+          <img src="images/accessories-placeholder.jpg" alt="אקססוריז" loading="lazy">
+          <div class="cat-card-label">אקססוריז</div>
+        </div>
+        <div class="cat-card" onclick="openCatAndClose('shorts')">
+          <img src="images/shorts-jeans-blue.jpg" alt="מכנסיים קצרים" loading="lazy">
+          <div class="cat-card-label">מכנסיים קצרים <span class="cat-count">13</span></div>
+        </div>
+        <div class="cat-card" onclick="openCatAndClose('suits')">
+          <img src="images/suit-set-black-pool.jpg" alt="חליפות" loading="lazy">
+          <div class="cat-card-label">חליפות <span class="cat-count">5</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ── GRID GALLERY MODAL ── -->
   <div id="grid-gallery-modal" class="grid-gallery-modal" onclick="handleGridBgClick(event)">
@@ -1499,6 +1618,27 @@
       });
     })();
 
+
+    // ── CATEGORIES MODAL ──
+    function openCategoriesModal() {
+      document.getElementById('categories-modal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeCategoriesModal() {
+      document.getElementById('categories-modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function handleCatBgClick(e) {
+      if (e.target === document.getElementById('categories-modal')) closeCategoriesModal();
+    }
+    function openCatAndClose(key) {
+      closeCategoriesModal();
+      var entry = GALLERY_REGISTRY[key];
+      if (!entry) return;
+      currentGalleryKey = key;
+      currentSizeList = entry.sizes;
+      openGridGallery(entry.getImages(), entry.title);
+    }
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeGridGallery();
