@@ -975,13 +975,9 @@
     .marquee-track {
       display: inline-flex;
       white-space: nowrap;
-      animation: marquee-scroll 28s linear infinite;
+      will-change: transform;
     }
     .marquee-sep { margin: 0 1.2rem; opacity: 0.35; }
-    @keyframes marquee-scroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
 
     /* ── LOGO SHIMMER ── */
     @keyframes gold-shimmer {
@@ -1498,6 +1494,23 @@
       document.querySelectorAll('.fade-up').forEach(function(el) {
         observer.observe(el);
       });
+    })();
+
+    // ── SEAMLESS MARQUEE (JS) ──
+    (function() {
+      var track = document.querySelector('.marquee-track');
+      if (!track) return;
+      var singleW = track.scrollWidth / 2; // HTML has 2 copies
+      track.innerHTML += track.innerHTML;  // now 4 copies total
+      var pos = 0;
+      var SPEED = 0.6;
+      function tick() {
+        pos -= SPEED;
+        if (pos <= -singleW) pos += singleW;
+        track.style.transform = 'translateX(' + pos + 'px)';
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
     })();
 
     document.addEventListener('keydown', function(e) {
