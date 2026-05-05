@@ -1495,19 +1495,28 @@
 
     // ── SEAMLESS MARQUEE (JS) ──
     (function() {
-      var track = document.querySelector('.marquee-track');
-      if (!track) return;
-      var singleW = track.scrollWidth / 2; // HTML has 2 copies
-      track.innerHTML += track.innerHTML;  // now 4 copies total
-      var pos = 0;
-      var SPEED = 0.6;
-      function tick() {
-        pos -= SPEED;
-        if (pos <= -singleW) pos += singleW;
-        track.style.transform = 'translateX(' + pos + 'px)';
+      function initMarquee() {
+        var track = document.querySelector('.marquee-track');
+        if (!track) return;
+        var singleW = track.scrollWidth / 2; // HTML already has 2 copies
+        if (singleW <= 0) return;
+        track.innerHTML += track.innerHTML;  // now 4 copies — plenty of buffer
+        var pos = 0;
+        var SPEED = 0.38; // px/frame — קצב קריא
+        function tick() {
+          pos -= SPEED;
+          if (pos <= -singleW) pos += singleW;
+          track.style.transform = 'translateX(' + pos + 'px)';
+          requestAnimationFrame(tick);
+        }
         requestAnimationFrame(tick);
       }
-      requestAnimationFrame(tick);
+      // Wait for fonts so width measurement is accurate
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(initMarquee);
+      } else {
+        window.addEventListener('load', initMarquee);
+      }
     })();
 
     document.addEventListener('keydown', function(e) {
