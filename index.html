@@ -982,24 +982,48 @@
     }
 
     .announcement-bar {
-      background-color: #111;
+      background: linear-gradient(90deg, #0a0a0a 0%, #1a1400 40%, #0a0a0a 100%);
       color: #d4af37;
       text-align: center;
-      padding: 8px 10px;
+      padding: 11px 16px;
       font-size: 15px;
-      font-weight: bold;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       width: 100%;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-      border-bottom: 1px solid #d4af37;
+      box-shadow: 0 2px 12px rgba(201,168,76,0.18);
+      border-bottom: 1px solid rgba(201,168,76,0.5);
+      overflow: hidden;
+    }
+    .announcement-bar::before,
+    .announcement-bar::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 60px;
+      pointer-events: none;
+    }
+    .announcement-bar::before { left: 0; background: linear-gradient(to right, #0a0a0a, transparent); }
+    .announcement-bar::after  { right: 0; background: linear-gradient(to left, #0a0a0a, transparent); }
+    .announcement-bar span {
+      display: inline-block;
+      animation: marquee-banner 18s linear infinite;
+    }
+    @keyframes marquee-banner {
+      0%   { transform: translateX(30%); opacity: 0; }
+      8%   { opacity: 1; }
+      45%  { transform: translateX(0%); }
+      55%  { transform: translateX(0%); }
+      92%  { opacity: 1; }
+      100% { transform: translateX(-30%); opacity: 0; }
     }
 
     @media (max-width: 768px) {
       .announcement-bar {
         font-size: 13px;
-        padding: 6px 8px;
+        padding: 8px 10px;
       }
     }
 
@@ -1098,7 +1122,6 @@
         height: 100svh;
         overflow: hidden;
       }
-      .announcement-bar,
       .products,
       .contact,
       footer,
