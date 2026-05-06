@@ -771,7 +771,7 @@
       flex: 1;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
       gap: 0.4rem;
       min-height: 0;
     }
@@ -784,7 +784,6 @@
       transition: transform 0.15s ease, border-color 0.2s;
     }
     .cat-card:active { transform: scale(0.94); border-color: var(--gold); }
-    .cat-card:nth-child(7) { grid-column: 2; }
     .cat-card img {
       width: 100%; height: 100%;
       object-fit: cover; display: block;
@@ -1091,6 +1090,32 @@
     .about-card.fade-up.visible:hover   { transform: translateY(-4px); }
     .product-card.fade-up.visible:hover { transform: translateY(-5px); }
 
+    /* ── MOBILE FULLSCREEN LAYOUT ── */
+    @media (max-width: 768px) {
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100svh;
+        overflow: hidden;
+      }
+      .announcement-bar,
+      .products,
+      .contact,
+      footer,
+      .floating-nav {
+        display: none !important;
+      }
+      .hero-section {
+        flex: 1;
+        min-height: 0;
+        height: auto !important;
+      }
+      .about {
+        flex-shrink: 0;
+        padding: 0.5rem 0.6rem !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1112,10 +1137,6 @@
     </video>
     <div class="overlay"></div>
     <div class="hero-content">
-      <div class="logo-box">
-        <span class="logo-44">44</span>
-        <span class="logo-text">MEN'S BOUTIQUE</span>
-      </div>
       <h1 class="slogan">תתלבש כמו גבר</h1>
       <button class="cta-button" onclick="openCategoriesModal()">צפה בקולקציה</button>
     </div>
@@ -1195,19 +1216,6 @@
         <div class="product-info">
           <h3>נעליים <span class="item-count">6</span></h3>
           <div class="desc">סניקרס פרימיום</div>
-          <div class="gallery-cta">📸 צפה בקולקציה</div>
-        </div>
-      </div>
-
-      <!-- אקססוריז -->
-      <div class="product-card fade-up">
-        <div class="product-img">
-          <img src="images/accessories-placeholder.jpg" alt="אקססוריז" loading="lazy" />
-          <div class="gallery-hint">בקרוב</div>
-        </div>
-        <div class="product-info">
-          <h3>אקססוריז</h3>
-          <div class="desc">השלימו את הלוק</div>
           <div class="gallery-cta">📸 צפה בקולקציה</div>
         </div>
       </div>
@@ -1309,11 +1317,6 @@
         <img src="images/shoe-qoqll-bw.jpg" alt="נעליים" loading="lazy">
         <div class="cat-card-overlay"></div>
         <div class="cat-card-label">נעליים<span class="cat-count">6 פריטים</span></div>
-      </div>
-      <div class="cat-card">
-        <img src="images/accessories-placeholder.jpg" alt="אקססוריז" loading="lazy">
-        <div class="cat-card-overlay"></div>
-        <div class="cat-card-label">אקססוריז</div>
       </div>
       <div class="cat-card" onclick="openCatAndClose('shorts')">
         <img src="images/shorts-jeans-blue.jpg" alt="מכנסיים קצרים" loading="lazy">
