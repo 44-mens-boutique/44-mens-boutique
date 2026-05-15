@@ -611,6 +611,13 @@
       text-align: center;
       padding: 0.3rem;
     }
+    .thumb-cat {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      opacity: 0.8;
+      letter-spacing: 0.03em;
+    }
 
     .detail-view-container {
       display: flex;
@@ -1344,13 +1351,13 @@
             if (i < arrs[j].length) r.push(arrs[j][i]);
         return r;
       }
-      function tag(arr, sizes) { return arr.map(function(x) { return Object.assign({}, x, { sizes: sizes }); }); }
+      function tag(arr, sizes, cat) { return arr.map(function(x) { return Object.assign({}, x, { sizes: sizes, category: cat }); }); }
       return interleave([
-        tag(tshirtImages, SIZES_CLOTHING),
-        tag(suitImages,   SIZES_CLOTHING),
-        tag(shortsImages, SIZES_CLOTHING),
-        tag(jeansImages,  SIZES_PANTS),
-        tag(shoeImages,   SIZES_SHOES),
+        tag(tshirtImages, SIZES_CLOTHING, 'חולצות'),
+        tag(suitImages,   SIZES_CLOTHING, 'חליפות'),
+        tag(shortsImages, SIZES_CLOTHING, 'מכנסיים קצרים'),
+        tag(jeansImages,  SIZES_PANTS,    'ג\'ינסים'),
+        tag(shoeImages,   SIZES_SHOES,    'נעליים'),
       ]);
     })();
 
@@ -1414,7 +1421,7 @@
         div.onclick = function() { showDetail(i); };
         div.innerHTML =
           '<img src="' + item.src + '" alt="' + item.name + '" loading="lazy" />' +
-          '<div class="thumb-price">' + item.price + '</div>';
+          '<div class="thumb-price"><span class="thumb-cat">' + (item.category || '') + '</span>' + item.price + '</div>';
         grid.appendChild(div);
       });
 
@@ -1432,7 +1439,7 @@
       const item = currentGridImages[index];
       currentItem = item;
       document.getElementById('detail-img').src = item.src;
-      document.getElementById('detail-price').textContent = item.price;
+      document.getElementById('detail-price').innerHTML = (item.category ? '<span style="font-size:0.8rem;opacity:0.75;font-weight:500;margin-left:6px;">' + item.category + '</span> ' : '') + item.price;
       buildSizeButtons(item.sizes || currentSizeList);
       document.getElementById('nav-prev').disabled = (index >= currentGridImages.length - 1);
       document.getElementById('nav-next').disabled = (index <= 0);
