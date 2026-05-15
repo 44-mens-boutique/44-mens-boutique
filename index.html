@@ -1281,56 +1281,7 @@
   <!-- ── FLOATING WHATSAPP ── -->
 
   <script>
-    const tshirtImages = [
-      { src: 'images/tshirt-memo-god.jpg', name: 'חולצת MEMO – I have seen the goodness of God', price: '₪159' },
-      { src: 'images/tshirt-regrata-5.jpg', name: 'חולצת Regrata – Own Tears Applause Treasures Everything', price: '₪159' },
-      { src: 'images/tshirt-1975-black.jpg', name: 'חולצת 1975 שחורה', price: '₪159' },
-      { src: 'images/tshirt-note-broke.jpg', name: 'חולצת NOTE – I Ain\'t Rich But I Get Up Everyday', price: '₪159' },
-      { src: 'images/tshirt-believe-god.jpg', name: 'חולצת Believe God – That You Matter To Him', price: '₪159' },
-      { src: 'images/tshirt-love-on-tour.jpg', name: 'חולצת Love On Tour – Nashville 2021', price: '₪159' },
-      { src: 'images/tshirt-1975-brown.jpg', name: 'חולצת 1975 חומה', price: '₪159' },
-      { src: 'images/tshirt-770-black.jpg', name: 'חולצת 770 שחורה', price: '₪159' },
-      { src: 'images/tshirt-acne-studios.jpg', name: 'חולצת Acne Studios שחורה', price: '₪159' },
-    ];
-
-    const suitImages = [
-      { src: 'images/suit-set-black-pool.jpg', name: 'סט שחור – חולצה + מכנסיים', price: '₪279' },
-      { src: 'images/suit-set-knit-black.jpg', name: 'סט סריג שחור – חולצה + מכנסיים', price: '₪279' },
-      { src: 'images/suit-white.jpg', name: 'חליפת לינן לבנה', price: '₪299' },
-      { src: 'images/suit-beige.jpg', name: 'חליפת לינן בז\'', price: '₪349' },
-      { src: 'images/suit-black.jpg', name: 'חליפת לינן שחורה', price: '₪349' },
-    ];
-
-    const pantsImages = [];
-
-    const shortsImages = [
-      { src: 'images/shorts-jeans-blue.jpg', name: 'ג\'ינס קצר קרוע כחול', price: '₪219' },
-      { src: 'images/shorts-jeans-light.jpg', name: 'ג\'ינס קצר קרוע תכלת', price: '₪219' },
-      { src: 'images/shorts-denim-drawstring.jpg', name: 'ג\'ינס קצר כחול עם שרוך', price: '₪189' },
-      { src: 'images/shorts-brown.jpg', name: 'מכנסיים קצרים חומים', price: '₪189' },
-      { src: 'images/shorts-corduroy-beige.jpg', name: 'מכנסיים קצרים קורדרוי בז\'', price: '₪179' },
-      { src: 'images/shorts-cow-jeans.jpg', name: 'ג\'ינס קצר קרוע C.O.W', price: '₪179' },
-      { src: 'images/shorts-black-print.jpg', name: 'מכנסיים קצרים שחורים פרינט', price: '₪139' },
-      { src: 'images/shorts-pink-paisley.jpg', name: 'מכנסיים קצרים פייזלי ורוד', price: '₪139' },
-      { src: 'images/shorts-gray-embossed.jpg', name: 'מכנסיים קצרים אפורים', price: '₪139' },
-      { src: 'images/shorts-gray-black-duo.jpg', name: 'מכנסיים קצרים אפור/שחור', price: '₪139' },
-      { src: 'images/shorts-white-crack.jpg', name: 'מכנסיים קצרים לבנים פרינט סדקים', price: '₪139' },
-      { src: 'images/shorts-cream-bandana.jpg', name: 'מכנסיים קצרים קרם בנדנה שחור', price: '₪139' },
-      { src: 'images/shorts-bicolor-paisley.jpg', name: 'מכנסיים קצרים פייזלי שחור לבן', price: '₪139' },
-    ];
-
-    const jeansImages = [
-      { src: 'images/jeans-ripped-blue.jpg', name: 'ג\'ינס קרוע אוברסייז כחול', price: '₪239' },
-    ];
-
-    const shoeImages = [
-      { src: 'images/shoe-void-black.jpg', name: 'סניקרס Void 2025 שחור', price: '₪299' },
-      { src: 'images/shoe-void-beige.jpg', name: 'סניקרס Void 2025 בז\'', price: '₪299' },
-      { src: 'images/shoe-voga-white.jpg', name: 'סניקרס VOGA לבן', price: '₪299' },
-      { src: 'images/shoe-qoqll-bw.jpg', name: 'סניקרס QOQLL שחור-לבן', price: '₪179' },
-      { src: 'images/shoe-sandal-black.jpg', name: 'סנדל כפכף שחור עם אבזמים', price: '₪179' },
-      { src: 'images/shoe-gray-sneaker.jpg', name: 'סניקרס אפור פלטפורמה', price: '₪349' },
-    ];
+    let tshirtImages = [], suitImages = [], pantsImages = [], shortsImages = [], jeansImages = [], shoeImages = [];
 
     const WA_NUMBER = '972504375644';
     let currentGridImages = [];
@@ -1343,7 +1294,9 @@
     const SIZES_PANTS    = ['28', '30', '32', '34', '36', '38'];
     const SIZES_SHOES    = ['40', '41', '42', '43', '44', '45', '46'];
 
-    const allItems = (function() {
+    let allItems = [];
+
+    function buildAllItems() {
       function interleave(arrs) {
         var r = [], max = Math.max.apply(null, arrs.map(function(a) { return a.length; }));
         for (var i = 0; i < max; i++)
@@ -1352,14 +1305,27 @@
         return r;
       }
       function tag(arr, sizes, cat) { return arr.map(function(x) { return Object.assign({}, x, { sizes: sizes, category: cat }); }); }
-      return interleave([
+      allItems = interleave([
         tag(tshirtImages, SIZES_CLOTHING, 'חולצות'),
         tag(suitImages,   SIZES_CLOTHING, 'חליפות'),
         tag(shortsImages, SIZES_CLOTHING, 'מכנסיים קצרים'),
         tag(jeansImages,  SIZES_PANTS,    'ג\'ינסים'),
         tag(shoeImages,   SIZES_SHOES,    'נעליים'),
       ]);
-    })();
+    }
+
+    fetch('products.json?v=' + Date.now())
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        tshirtImages = data.tshirts || [];
+        suitImages   = data.suits   || [];
+        pantsImages  = data.pants   || [];
+        shortsImages = data.shorts  || [];
+        jeansImages  = data.jeans   || [];
+        shoeImages   = data.shoes   || [];
+        buildAllItems();
+      })
+      .catch(function() { buildAllItems(); });
 
     const GALLERY_REGISTRY = {
       all:     { getImages: function() { return allItems;     }, title: 'הקולקציה המלאה',           sizes: SIZES_CLOTHING },

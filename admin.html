@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ניהול מוצרים – 44 Men's Boutique</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #111; color: #fff; font-family: 'Segoe UI', Arial, sans-serif; direction: rtl; min-height: 100vh; }
+
+    header {
+      background: #1a1a1a;
+      border-bottom: 2px solid #c9a84c;
+      padding: 1rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+    }
+    header h1 { color: #c9a84c; font-size: 1.2rem; letter-spacing: 0.05em; }
+    #item-count { color: #888; font-size: 0.85rem; }
+
+    .token-bar {
+      background: #161616;
+      border-bottom: 1px solid #2a2a2a;
+      padding: 0.75rem 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
+    }
+    .token-bar label { color: #aaa; font-size: 0.82rem; white-space: nowrap; }
+    .token-bar input {
+      background: #222; border: 1px solid #444; color: #fff;
+      padding: 0.45rem 0.9rem; border-radius: 6px; flex: 1; min-width: 200px; max-width: 380px;
+      font-size: 0.85rem; direction: ltr;
+    }
+    .token-bar button {
+      background: #c9a84c; color: #000; border: none;
+      padding: 0.45rem 1.2rem; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 0.85rem;
+    }
+    .token-bar button:hover { background: #e8c96a; }
+    #token-ok { color: #4caf50; font-size: 0.8rem; }
+
+    #status-bar {
+      padding: 0.6rem 1.5rem; font-size: 0.88rem; min-height: 2.2rem;
+      display: flex; align-items: center;
+    }
+    #status-bar.ok   { color: #4caf50; }
+    #status-bar.err  { color: #f44336; }
+    #status-bar.wait { color: #c9a84c; }
+
+    .section-title {
+      padding: 0.5rem 1.5rem 0.25rem;
+      color: #c9a84c; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.06em;
+      border-top: 1px solid #222; margin-top: 0.5rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.9rem;
+      padding: 0.75rem 1.5rem 2rem;
+    }
+
+    .item {
+      background: #1a1a1a;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1.5px solid #2a2a2a;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .item:hover { border-color: #444; }
+    .item img {
+      width: 100%; aspect-ratio: 1 / 1;
+      object-fit: cover; display: block;
+    }
+    .item-info { padding: 0.45rem 0.5rem 0.55rem; }
+    .item-cat  { font-size: 0.65rem; color: #c9a84c; margin-bottom: 2px; }
+    .item-name { font-size: 0.72rem; color: #ccc; line-height: 1.35; }
+    .item-price{ font-size: 0.82rem; color: #fff; font-weight: 700; margin-top: 3px; }
+
+    .del-btn {
+      position: absolute; top: 6px; left: 6px;
+      background: rgba(180, 30, 30, 0.88);
+      color: #fff; border: none; border-radius: 50%;
+      width: 28px; height: 28px; font-size: 1rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-weight: 700; line-height: 1;
+      transition: background 0.15s;
+    }
+    .del-btn:hover { background: #cc0000; }
+
+    /* modal */
+    .overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.82); z-index: 200;
+      align-items: center; justify-content: center;
+    }
+    .overlay.open { display: flex; }
+    .modal {
+      background: #1c1c1c; border: 2px solid #c9a84c;
+      border-radius: 14px; padding: 2rem 1.8rem; max-width: 320px; width: 90%;
+      text-align: center;
+    }
+    .modal h2 { color: #c9a84c; font-size: 1.05rem; margin-bottom: 0.8rem; }
+    .modal p  { color: #ccc; font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.5rem; }
+    .modal-img { width: 90px; height: 90px; object-fit: cover; border-radius: 8px; margin-bottom: 0.8rem; }
+    .modal-btns { display: flex; gap: 0.75rem; justify-content: center; }
+    .btn-del    { background: #cc0000; color: #fff; border: none; padding: 0.6rem 1.6rem; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 0.9rem; }
+    .btn-del:hover { background: #e00; }
+    .btn-cancel { background: #333; color: #fff; border: none; padding: 0.6rem 1.4rem; border-radius: 8px; cursor: pointer; font-size: 0.9rem; }
+    .btn-cancel:hover { background: #444; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🛍️ ניהול מוצרים – 44 Men's Boutique</h1>
+  <span id="item-count"></span>
+</header>
+
+<div class="token-bar">
+  <label>GitHub Token:</label>
+  <input type="password" id="gh-token" placeholder="ghp_..." autocomplete="off" />
+  <button onclick="saveToken()">שמור</button>
+  <span id="token-ok"></span>
+</div>
+
+<div id="status-bar"></div>
+
+<div id="content"></div>
+
+<!-- Confirm Modal -->
+<div class="overlay" id="modal">
+  <div class="modal">
+    <img id="modal-img" class="modal-img" src="" alt="" />
+    <h2>מחיקת פריט</h2>
+    <p id="modal-text"></p>
+    <div class="modal-btns">
+      <button class="btn-del" onclick="confirmDelete()">מחק</button>
+      <button class="btn-cancel" onclick="closeModal()">ביטול</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const OWNER = '44-mens-boutique';
+  const REPO  = '44-mens-boutique';
+  const FILE  = 'products.json';
+
+  const CAT_LABELS = {
+    tshirts: 'חולצות',
+    suits:   'חליפות',
+    shorts:  'מכנסיים קצרים',
+    jeans:   'ג\'ינסים',
+    shoes:   'נעליים',
+  };
+
+  let productsData = null;
+  let pendingDelete = null; // { category, src, name }
+
+  // ── Token ──────────────────────────────────────────
+  function saveToken() {
+    const t = document.getElementById('gh-token').value.trim();
+    if (!t) return;
+    localStorage.setItem('gh44_token', t);
+    document.getElementById('gh-token').value = '';
+    document.getElementById('token-ok').textContent = '✓ נשמר';
+    loadProducts();
+  }
+
+  function getToken() {
+    return localStorage.getItem('gh44_token') || '';
+  }
+
+  // ── Load ───────────────────────────────────────────
+  async function loadProducts() {
+    setStatus('טוען פריטים...', 'wait');
+    const token = getToken();
+    if (!token) {
+      setStatus('הכנס GitHub Token למעלה כדי להתחיל', '');
+      return;
+    }
+
+    try {
+      const res = await fetch(
+        `https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`,
+        { headers: { Authorization: 'token ' + token } }
+      );
+      if (!res.ok) throw new Error('שגיאת GitHub: ' + res.status);
+      const data = await res.json();
+      productsData = { sha: data.sha, content: JSON.parse(atob(data.content.replace(/\n/g, ''))) };
+      renderAll();
+      setStatus('', '');
+    } catch(e) {
+      setStatus('שגיאה: ' + e.message, 'err');
+    }
+  }
+
+  // ── Render ─────────────────────────────────────────
+  function renderAll() {
+    const container = document.getElementById('content');
+    container.innerHTML = '';
+    let total = 0;
+
+    Object.keys(CAT_LABELS).forEach(function(cat) {
+      const items = (productsData.content[cat] || []);
+      if (!items.length) return;
+      total += items.length;
+
+      const title = document.createElement('div');
+      title.className = 'section-title';
+      title.textContent = CAT_LABELS[cat] + ' (' + items.length + ')';
+      container.appendChild(title);
+
+      const grid = document.createElement('div');
+      grid.className = 'grid';
+      grid.id = 'grid-' + cat;
+
+      items.forEach(function(item) {
+        grid.appendChild(makeCard(cat, item));
+      });
+
+      container.appendChild(grid);
+    });
+
+    document.getElementById('item-count').textContent = total + ' פריטים';
+  }
+
+  function makeCard(cat, item) {
+    const div = document.createElement('div');
+    div.className = 'item';
+    div.id = 'card-' + item.src.replace(/[^a-z0-9]/gi, '_');
+
+    const img = document.createElement('img');
+    img.src = item.src;
+    img.alt = item.name;
+    img.loading = 'lazy';
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'del-btn';
+    delBtn.textContent = '✕';
+    delBtn.title = 'מחק פריט';
+    delBtn.onclick = function() { askDelete(cat, item); };
+
+    const info = document.createElement('div');
+    info.className = 'item-info';
+    info.innerHTML =
+      '<div class="item-cat">' + CAT_LABELS[cat] + '</div>' +
+      '<div class="item-name">' + item.name + '</div>' +
+      '<div class="item-price">' + item.price + '</div>';
+
+    div.appendChild(img);
+    div.appendChild(delBtn);
+    div.appendChild(info);
+    return div;
+  }
+
+  // ── Delete ─────────────────────────────────────────
+  function askDelete(cat, item) {
+    pendingDelete = { cat, item };
+    document.getElementById('modal-img').src = item.src;
+    document.getElementById('modal-text').textContent = item.name;
+    document.getElementById('modal').classList.add('open');
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+    pendingDelete = null;
+  }
+
+  async function confirmDelete() {
+    closeModal();
+    if (!pendingDelete) return;
+
+    const token = getToken();
+    if (!token) { setStatus('חסר GitHub Token', 'err'); return; }
+
+    const { cat, item } = pendingDelete;
+    setStatus('מוחק "' + item.name + '"...', 'wait');
+
+    // Remove from local data
+    productsData.content[cat] = productsData.content[cat].filter(function(x) {
+      return x.src !== item.src;
+    });
+
+    try {
+      const newContent = JSON.stringify(productsData.content, null, 2);
+      const encoded = btoa(unescape(encodeURIComponent(newContent)));
+
+      const res = await fetch(
+        `https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`,
+        {
+          method: 'PUT',
+          headers: {
+            Authorization: 'token ' + token,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: 'מחיקת פריט: ' + item.name,
+            content: encoded,
+            sha: productsData.sha,
+          }),
+        }
+      );
+
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.message || res.status);
+      }
+
+      const updated = await res.json();
+      productsData.sha = updated.content.sha;
+
+      // Remove card from UI
+      const cardId = 'card-' + item.src.replace(/[^a-z0-9]/gi, '_');
+      const card = document.getElementById(cardId);
+      if (card) card.remove();
+
+      // Update count in section title
+      const remaining = productsData.content[cat].length;
+      const grid = document.getElementById('grid-' + cat);
+      if (grid && grid.previousElementSibling) {
+        grid.previousElementSibling.textContent = CAT_LABELS[cat] + ' (' + remaining + ')';
+      }
+
+      // Update total count
+      let total = 0;
+      Object.keys(CAT_LABELS).forEach(function(k) { total += (productsData.content[k] || []).length; });
+      document.getElementById('item-count').textContent = total + ' פריטים';
+
+      setStatus('✓ "' + item.name + '" נמחק. האתר יתעדכן תוך 30 שניות.', 'ok');
+    } catch(e) {
+      // Restore on failure
+      productsData.content[cat].push(item);
+      setStatus('❌ שגיאה: ' + e.message, 'err');
+    }
+
+    pendingDelete = null;
+  }
+
+  // ── Status ─────────────────────────────────────────
+  function setStatus(msg, type) {
+    const el = document.getElementById('status-bar');
+    el.textContent = msg;
+    el.className = type ? 'ok err wait'.split(' ').reduce(function(c, t) {
+      return c.replace(t, '');
+    }, type) : '';
+    el.className = type || '';
+  }
+
+  // ── Init ───────────────────────────────────────────
+  const storedToken = getToken();
+  if (storedToken) {
+    document.getElementById('token-ok').textContent = '✓ Token שמור';
+    loadProducts();
+  } else {
+    setStatus('הכנס GitHub Token למעלה כדי להתחיל', '');
+  }
+</script>
+</body>
+</html>
