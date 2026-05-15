@@ -697,7 +697,6 @@
           card.className = 'product-card';
           card.innerHTML = '<img src="' + item.src + '" alt="' + item.name + '" loading="lazy" />' +
             '<div class="product-card-info">' +
-            '<div class="product-card-name">' + item.name + '</div>' +
             '<div class="product-card-price">' + item.price + '</div>' +
             '</div>';
           var itemWithSizes = Object.assign({}, item, { sizes: cat.sizes, category: cat.label });
@@ -797,7 +796,7 @@
           div.className = 'thumb-item';
           div.onclick = function() { showDetail(i); };
           div.innerHTML = '<img src="' + item.src + '" alt="' + item.name + '" loading="lazy" />' +
-            '<div class="thumb-price"><span class="thumb-cat">' + (item.category || '') + '</span>' + item.price + '</div>';
+            '<div class="thumb-price">' + item.price + '</div>';
           grid.appendChild(div);
         });
       }
