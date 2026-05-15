@@ -215,6 +215,18 @@
       "src": "images/shoe-new-3.jpg",
       "name": "נעל 5",
       "price": "₪299"
+    },
+    {
+      "src": "images/shoe-sale-1.jpg",
+      "name": "סניקרס שחור-לבן",
+      "price": "₪179"
+    }
+  ],
+  "sale": [
+    {
+      "src": "images/shoe-sale-1.jpg",
+      "name": "סניקרס שחור-לבן",
+      "price": "₪179"
     }
   ]
 }
