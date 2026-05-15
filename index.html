@@ -1170,7 +1170,7 @@
         <span class="hero-store-text">MEN'S BOUTIQUE</span>
       </div>
       <h1 class="slogan">תתלבש כמו גבר</h1>
-      <button class="cta-button" onclick="openCategoriesModal()">צפה בקולקציה</button>
+      <button class="cta-button" onclick="openAllItemsGallery()">צפה בקולקציה</button>
     </div>
   </div>
 
@@ -1193,93 +1193,6 @@
   </section>
 
   <!-- ── PRODUCTS ── -->
-  <section class="products" id="products">
-    <div class="section-title fade-up">
-      <h2>ה<span>קטלוג</span> שלנו</h2>
-      <div class="gold-line"></div>
-    </div>
-    <div class="products-grid">
-
-      <!-- חולצות -->
-      <div class="product-card fade-up" onclick="openTshirtGallery()" style="cursor:pointer;">
-        <div class="product-img">
-          <img src="images/tshirt-memo-god.jpg" alt="חולצות" loading="lazy" />
-          <div class="gallery-hint">9 פריטים לצפייה</div>
-        </div>
-        <div class="product-info">
-          <h3>חולצות <span class="item-count">9</span></h3>
-          <div class="desc">חולצות אוברסייז</div>
-          <div class="gallery-cta">📸 צפה בקולקציה</div>
-        </div>
-      </div>
-
-      <!-- מכנסיים -->
-      <div class="product-card fade-up" onclick="openPantsGallery()" style="cursor:pointer;">
-        <div class="product-img">
-          <img src="images/pants-placeholder.jpg" alt="מכנסיים" loading="lazy" />
-          <div class="gallery-hint">קולקציה בקרוב</div>
-        </div>
-        <div class="product-info">
-          <h3>מכנסיים</h3>
-          <div class="desc">קולקציה חדשה בקרוב</div>
-          <div class="gallery-cta">📸 צפה בקולקציה</div>
-        </div>
-      </div>
-
-      <!-- ג'ינסים -->
-      <div class="product-card fade-up" onclick="openJeansGallery()" style="cursor:pointer;">
-        <div class="product-img">
-          <img src="images/jeans-ripped-blue.jpg" alt="ג'ינסים" loading="lazy" />
-          <div class="gallery-hint">1 פריטים לצפייה</div>
-        </div>
-        <div class="product-info">
-          <h3>ג'ינסים <span class="item-count">1</span></h3>
-          <div class="desc">ג'ינס קרוע אוברסייז</div>
-          <div class="gallery-cta">📸 צפה בקולקציה</div>
-        </div>
-      </div>
-
-      <!-- נעליים -->
-      <div class="product-card fade-up" onclick="openShoeGallery()" style="cursor:pointer;">
-        <div class="product-img">
-          <img src="images/shoe-qoqll-bw.jpg" alt="נעליים" loading="lazy" />
-          <div class="gallery-hint">6 פריטים לצפייה</div>
-        </div>
-        <div class="product-info">
-          <h3>נעליים <span class="item-count">6</span></h3>
-          <div class="desc">סניקרס פרימיום</div>
-          <div class="gallery-cta">📸 צפה בקולקציה</div>
-        </div>
-      </div>
-
-      <!-- מכנסיים וג'ינסים קצרים -->
-      <div class="product-card fade-up" onclick="openShortsGallery()" style="cursor:pointer;">
-        <div class="product-img">
-          <video src="images/shorts-category.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
-          <div class="gallery-hint">13 פריטים לצפייה</div>
-        </div>
-        <div class="product-info">
-          <h3>מכנסיים וג'ינסים קצרים <span class="item-count">13</span></h3>
-          <div class="desc">קולקציית קיץ</div>
-          <div class="gallery-cta">📸 צפה בקולקציה</div>
-        </div>
-      </div>
-
-      <!-- מוצר 7 -->
-      <div class="product-card fade-up" onclick="openGallery()" style="cursor:pointer;">
-        <div class="product-img">
-          <img src="images/suit-set-black-pool.jpg" alt="חליפות" loading="lazy" />
-          <div class="gallery-hint">5 פריטים לצפייה</div>
-        </div>
-        <div class="product-info">
-          <h3>חליפות <span class="item-count">5</span></h3>
-          <div class="desc">חליפות פרימיום לכל אירוע</div>
-          <div class="gallery-cta">📸 צפה בקולקציה</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <!-- ── CONTACT ── -->
   <section class="contact" id="contact">
@@ -1326,42 +1239,6 @@
     <p>© 2026 <span>44 Men's Boutique</span> • ראשון לציון • כל הזכויות שמורות</p>
   </footer>
 
-  <!-- ── CATEGORIES OVERVIEW MODAL ── -->
-  <div id="categories-modal" class="categories-modal">
-    <div class="cat-pill" onclick="closeCategoriesModal()"></div>
-    <div class="cat-grid">
-      <div class="cat-card" onclick="openCatAndClose('tshirts')">
-        <img src="images/tshirt-memo-god.jpg" alt="חולצות" loading="lazy">
-        <div class="cat-card-overlay"></div>
-        <div class="cat-card-label">חולצות<span class="cat-count">9 פריטים</span></div>
-      </div>
-      <div class="cat-card" onclick="openCatAndClose('pants')">
-        <img src="images/pants-placeholder.jpg" alt="מכנסיים" loading="lazy">
-        <div class="cat-card-overlay"></div>
-        <div class="cat-card-label">מכנסיים</div>
-      </div>
-      <div class="cat-card" onclick="openCatAndClose('jeans')">
-        <img src="images/jeans-ripped-blue.jpg" alt="ג'ינסים" loading="lazy">
-        <div class="cat-card-overlay"></div>
-        <div class="cat-card-label">ג'ינסים<span class="cat-count">1 פריט</span></div>
-      </div>
-      <div class="cat-card" onclick="openCatAndClose('shoes')">
-        <img src="images/shoe-qoqll-bw.jpg" alt="נעליים" loading="lazy">
-        <div class="cat-card-overlay"></div>
-        <div class="cat-card-label">נעליים<span class="cat-count">6 פריטים</span></div>
-      </div>
-      <div class="cat-card" onclick="openCatAndClose('shorts')">
-        <video src="images/shorts-category.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;"></video>
-        <div class="cat-card-overlay"></div>
-        <div class="cat-card-label">מכנסיים קצרים<span class="cat-count">13 פריטים</span></div>
-      </div>
-      <div class="cat-card" onclick="openCatAndClose('suits')">
-        <img src="images/suit-set-black-pool.jpg" alt="חליפות" loading="lazy">
-        <div class="cat-card-overlay"></div>
-        <div class="cat-card-label">חליפות<span class="cat-count">5 פריטים</span></div>
-      </div>
-    </div>
-  </div>
 
   <!-- ── GRID GALLERY MODAL ── -->
   <div id="grid-gallery-modal" class="grid-gallery-modal" onclick="handleGridBgClick(event)">
@@ -1459,7 +1336,26 @@
     const SIZES_PANTS    = ['28', '30', '32', '34', '36', '38'];
     const SIZES_SHOES    = ['40', '41', '42', '43', '44', '45', '46'];
 
+    const allItems = (function() {
+      function interleave(arrs) {
+        var r = [], max = Math.max.apply(null, arrs.map(function(a) { return a.length; }));
+        for (var i = 0; i < max; i++)
+          for (var j = 0; j < arrs.length; j++)
+            if (i < arrs[j].length) r.push(arrs[j][i]);
+        return r;
+      }
+      function tag(arr, sizes) { return arr.map(function(x) { return Object.assign({}, x, { sizes: sizes }); }); }
+      return interleave([
+        tag(tshirtImages, SIZES_CLOTHING),
+        tag(suitImages,   SIZES_CLOTHING),
+        tag(shortsImages, SIZES_CLOTHING),
+        tag(jeansImages,  SIZES_PANTS),
+        tag(shoeImages,   SIZES_SHOES),
+      ]);
+    })();
+
     const GALLERY_REGISTRY = {
+      all:     { getImages: function() { return allItems;     }, title: 'הקולקציה המלאה',           sizes: SIZES_CLOTHING },
       tshirts: { getImages: function() { return tshirtImages; }, title: 'חולצות',                   sizes: SIZES_CLOTHING },
       pants:   { getImages: function() { return pantsImages;  }, title: 'מכנסיים',                  sizes: SIZES_PANTS    },
       jeans:   { getImages: function() { return jeansImages;  }, title: 'ג\'ינסים',                  sizes: SIZES_PANTS    },
@@ -1537,7 +1433,7 @@
       currentItem = item;
       document.getElementById('detail-img').src = item.src;
       document.getElementById('detail-price').textContent = item.price;
-      buildSizeButtons(currentSizeList);
+      buildSizeButtons(item.sizes || currentSizeList);
       document.getElementById('nav-prev').disabled = (index >= currentGridImages.length - 1);
       document.getElementById('nav-next').disabled = (index <= 0);
       document.getElementById('grid-view').style.display = 'none';
@@ -1569,12 +1465,7 @@
       if (e.target === document.getElementById('grid-gallery-modal')) closeGridGallery();
     }
 
-    function openShortsGallery()  { currentGalleryKey = 'shorts';  currentSizeList = SIZES_CLOTHING; openGridGallery(shortsImages, 'מכנסיים וג\'ינסים קצרים'); }
-    function openJeansGallery()   { currentGalleryKey = 'jeans';   currentSizeList = SIZES_PANTS;    openGridGallery(jeansImages, 'ג\'ינסים'); }
-    function openPantsGallery()   { currentGalleryKey = 'pants';   currentSizeList = SIZES_PANTS;    openGridGallery(pantsImages, 'מכנסיים'); }
-    function openTshirtGallery()  { currentGalleryKey = 'tshirts'; currentSizeList = SIZES_CLOTHING; openGridGallery(tshirtImages, 'חולצות'); }
-    function openGallery()        { currentGalleryKey = 'suits';   currentSizeList = SIZES_CLOTHING; openGridGallery(suitImages, 'חליפות'); }
-    function openShoeGallery()    { currentGalleryKey = 'shoes';   currentSizeList = SIZES_SHOES;    openGridGallery(shoeImages, 'נעליים'); }
+    function openAllItemsGallery() { currentGalleryKey = 'all'; currentSizeList = SIZES_CLOTHING; openGridGallery(allItems, 'הקולקציה המלאה'); }
 
     // שחזור גלריה כשחוזרים מוואטסאפ
     window.addEventListener('pageshow', function() {
@@ -1622,35 +1513,9 @@
     })();
 
 
-    // ── CATEGORIES MODAL ──
-    function openCategoriesModal() {
-      document.getElementById('categories-modal').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeCategoriesModal() {
-      document.getElementById('categories-modal').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-    function openCatAndClose(key) {
-      closeCategoriesModal();
-      var entry = GALLERY_REGISTRY[key];
-      if (!entry) return;
-      currentGalleryKey = key;
-      currentSizeList = entry.sizes;
-      openGridGallery(entry.getImages(), entry.title);
-    }
-    // סגירה בגרירה למטה
-    (function() {
-      var el = document.getElementById('categories-modal');
-      var startY = 0;
-      el.addEventListener('touchstart', function(e) { startY = e.touches[0].clientY; }, { passive: true });
-      el.addEventListener('touchend', function(e) {
-        if (e.changedTouches[0].clientY - startY > 60) closeCategoriesModal();
-      }, { passive: true });
-    })();
 
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') { closeGridGallery(); closeCategoriesModal(); }
+      if (e.key === 'Escape') { closeGridGallery(); }
       if (e.key === 'ArrowLeft')  navigateDetail(-1);
       if (e.key === 'ArrowRight') navigateDetail(1);
     });
