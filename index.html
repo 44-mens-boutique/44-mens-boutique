@@ -213,6 +213,7 @@
       background: none; border: none;
       color: #888; font-size: 1.1rem; cursor: pointer;
     }
+    .auth-overlay.mandatory .auth-close { display: none; }
     .auth-logo {
       text-align: center;
       color: var(--gold);
@@ -855,6 +856,10 @@
     auth.onAuthStateChanged(function(user) {
       currentUser = user;
       if (user) {
+        // הסר חסימת כניסה וסגור מודל
+        var overlay = document.getElementById('auth-overlay');
+        overlay.classList.remove('mandatory');
+        overlay.classList.remove('open');
         db.collection('users').doc(user.uid).get().then(function(doc) {
           var name  = doc.exists ? doc.data().name  : user.email;
           var phone = doc.exists ? doc.data().phone : '';
@@ -868,12 +873,21 @@
         document.getElementById('auth-btn-label').textContent = 'הרשמה / כניסה';
         document.getElementById('auth-welcome').style.display = 'none';
         document.getElementById('auth-forms').style.display   = 'block';
+        // חסום כניסה לאתר עד הרשמה
+        openAuthModal();
+        document.getElementById('auth-overlay').classList.add('mandatory');
       }
     });
 
     function openAuthModal()  { document.getElementById('auth-overlay').classList.add('open'); }
-    function closeAuthModal() { document.getElementById('auth-overlay').classList.remove('open'); }
-    function handleAuthBgClick(e) { if (e.target === document.getElementById('auth-overlay')) closeAuthModal(); }
+    function closeAuthModal() {
+      var overlay = document.getElementById('auth-overlay');
+      if (overlay.classList.contains('mandatory')) return; // לא ניתן לסגור לפני הרשמה
+      overlay.classList.remove('open');
+    }
+    function handleAuthBgClick(e) {
+      if (e.target === document.getElementById('auth-overlay')) closeAuthModal();
+    }
 
     function doGoogleLogin() {
       var provider = new firebase.auth.GoogleAuthProvider();
