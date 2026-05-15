@@ -1,15 +1,5 @@
 {
-  "tshirts": [
-    { "src": "images/tshirt-memo-god.jpg",      "name": "חולצת MEMO – I have seen the goodness of God",                  "price": "₪159" },
-    { "src": "images/tshirt-regrata-5.jpg",      "name": "חולצת Regrata – Own Tears Applause Treasures Everything",       "price": "₪159" },
-    { "src": "images/tshirt-1975-black.jpg",     "name": "חולצת 1975 שחורה",                                              "price": "₪159" },
-    { "src": "images/tshirt-note-broke.jpg",     "name": "חולצת NOTE – I Ain't Rich But I Get Up Everyday",               "price": "₪159" },
-    { "src": "images/tshirt-believe-god.jpg",    "name": "חולצת Believe God – That You Matter To Him",                    "price": "₪159" },
-    { "src": "images/tshirt-love-on-tour.jpg",   "name": "חולצת Love On Tour – Nashville 2021",                           "price": "₪159" },
-    { "src": "images/tshirt-1975-brown.jpg",     "name": "חולצת 1975 חומה",                                               "price": "₪159" },
-    { "src": "images/tshirt-770-black.jpg",      "name": "חולצת 770 שחורה",                                               "price": "₪159" },
-    { "src": "images/tshirt-acne-studios.jpg",   "name": "חולצת Acne Studios שחורה",                                      "price": "₪159" }
-  ],
+  "tshirts": [],
   "suits": [
     { "src": "images/suit-set-black-pool.jpg",   "name": "סט שחור – חולצה + מכנסיים",                                    "price": "₪279" },
     { "src": "images/suit-set-knit-black.jpg",   "name": "סט סריג שחור – חולצה + מכנסיים",                              "price": "₪279" },
