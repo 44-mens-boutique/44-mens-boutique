@@ -183,6 +183,7 @@
       height: 60vw;
       min-height: 220px;
       max-height: 420px;
+      background: #1a1a1a;
       background-size: cover;
       background-position: center;
       cursor: pointer;
@@ -191,6 +192,7 @@
       justify-content: center;
       overflow: hidden;
       transition: transform 0.3s;
+      border-bottom: 1px solid rgba(201,168,76,0.15);
     }
     .cat-tile::before {
       content: '';
@@ -537,27 +539,27 @@
   <!-- ── CATEGORIES ── -->
   <div class="categories-section">
 
-    <div class="cat-tile" style="background-image: url('images/tshirt-1975-black.jpg')" onclick="openCategoryGallery('tshirts')">
+    <div class="cat-tile" onclick="openCategoryGallery('tshirts')">
       <span class="cat-tile-label">חולצות</span>
     </div>
 
-    <div class="cat-tile" style="background-image: url('images/jeans-ripped-blue.jpg')" onclick="openCategoryGallery('jeans')">
+    <div class="cat-tile" onclick="openCategoryGallery('jeans')">
       <span class="cat-tile-label">ג'ינסים</span>
     </div>
 
-    <div class="cat-tile" style="background-image: url('images/shoe-void-black.jpg')" onclick="openCategoryGallery('shoes')">
+    <div class="cat-tile" onclick="openCategoryGallery('shoes')">
       <span class="cat-tile-label">נעליים</span>
     </div>
 
-    <div class="cat-tile" style="background-image: url('images/suit-black.jpg')" onclick="openCategoryGallery('suits')">
+    <div class="cat-tile" onclick="openCategoryGallery('suits')">
       <span class="cat-tile-label">חליפות</span>
     </div>
 
-    <div class="cat-tile sale-tile" style="background-image: url('images/tshirt-believe-god.jpg')" onclick="openCategoryGallery('sale')">
+    <div class="cat-tile sale-tile" onclick="openCategoryGallery('sale')">
       <span class="cat-tile-label">SALE</span>
     </div>
 
-    <div class="cat-tile" style="background-image: url('images/shorts-brown.jpg')" onclick="openCategoryGallery('shorts')">
+    <div class="cat-tile" onclick="openCategoryGallery('shorts')">
       <span class="cat-tile-label">מכנסיים</span>
     </div>
 
