@@ -358,6 +358,18 @@
   }
 
   // ── Init ───────────────────────────────────────────
+  // קבלת טוקן מ-URL parameter (מ-admin-setup.html)
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const urlToken = params.get('t');
+    if (urlToken && /^[a-zA-Z0-9_]+$/.test(urlToken)) {
+      localStorage.setItem('gh44_token', urlToken);
+      // נקה מה-URL
+      history.replaceState({}, '', window.location.pathname);
+      document.getElementById('token-ok').textContent = '✓ Token שמור';
+    }
+  })();
+
   const storedToken = getToken();
   if (storedToken) {
     document.getElementById('token-ok').textContent = '✓ Token שמור';
