@@ -20,7 +20,15 @@
   ],
   "suits": [],
   "shorts": [],
-  "jeans": [],
+  "jeans": [
+    { "src": "images/jeans-new-1.jpg", "name": "ג'ינס 1", "price": "₪179" },
+    { "src": "images/jeans-new-2.jpg", "name": "ג'ינס 2", "price": "₪179" },
+    { "src": "images/jeans-new-3.jpg", "name": "ג'ינס 3", "price": "₪179" },
+    { "src": "images/jeans-new-4.jpg", "name": "ג'ינס 4", "price": "₪179" },
+    { "src": "images/jeans-new-5.jpg", "name": "ג'ינס 5", "price": "₪179" },
+    { "src": "images/jeans-new-6.jpg", "name": "ג'ינס 6", "price": "₪179" },
+    { "src": "images/jeans-new-7.jpg", "name": "ג'ינס 7", "price": "₪179" }
+  ],
   "shoes": [
     { "src": "images/shoe-void-black.jpg",       "name": "סניקרס Void 2025 שחור",          "price": "₪299" },
     { "src": "images/shoe-void-beige.jpg",       "name": "סניקרס Void 2025 בז'",           "price": "₪299" },
