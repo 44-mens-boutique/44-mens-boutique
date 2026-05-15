@@ -36,7 +36,9 @@
     { "src": "images/jeans-new-13.jpg", "name": "ג'ינס 13", "price": "₪199" },
     { "src": "images/jeans-new-14.jpg", "name": "ג'ינס 14", "price": "₪199" },
     { "src": "images/jeans-new-15.jpg", "name": "ג'ינס 15", "price": "₪199" },
-    { "src": "images/jeans-new-16.jpg", "name": "ג'ינס 16", "price": "₪199" }
+    { "src": "images/jeans-new-16.jpg", "name": "ג'ינס 16", "price": "₪199" },
+    { "src": "images/jeans-new-17.jpg", "name": "ג'ינס 17", "price": "₪239" },
+    { "src": "images/jeans-new-18.jpg", "name": "ג'ינס 18", "price": "₪239" }
   ],
   "shoes": [
     { "src": "images/shoe-void-black.jpg",       "name": "סניקרס Void 2025 שחור",          "price": "₪299" },
