@@ -1,56 +1,220 @@
 {
   "tshirts": [
-    { "src": "images/tshirt-new-1.jpg",  "name": "חולצה 1",  "price": "₪159" },
-    { "src": "images/tshirt-new-2.jpg",  "name": "חולצה 2",  "price": "₪159" },
-    { "src": "images/tshirt-new-3.jpg",  "name": "חולצה 3",  "price": "₪159" },
-    { "src": "images/tshirt-new-4.jpg",  "name": "חולצה 4",  "price": "₪159" },
-    { "src": "images/tshirt-new-5.jpg",  "name": "חולצה 5",  "price": "₪159" },
-    { "src": "images/tshirt-new-6.jpg",  "name": "חולצה 6",  "price": "₪159" },
-    { "src": "images/tshirt-new-7.jpg",  "name": "חולצה 7",  "price": "₪159" },
-    { "src": "images/tshirt-new-8.jpg",  "name": "חולצה 8",  "price": "₪159" },
-    { "src": "images/tshirt-new-9.jpg",  "name": "חולצה 9",  "price": "₪159" },
-    { "src": "images/tshirt-new-10.jpg", "name": "חולצה 10", "price": "₪159" },
-    { "src": "images/tshirt-new-11.jpg", "name": "חולצה 11", "price": "₪159" },
-    { "src": "images/tshirt-new-12.jpg", "name": "חולצה 12", "price": "₪159" },
-    { "src": "images/tshirt-new-13.jpg", "name": "חולצה 13", "price": "₪159" },
-    { "src": "images/tshirt-new-14.jpg", "name": "חולצה 14", "price": "₪159" },
-    { "src": "images/tshirt-new-15.jpg", "name": "חולצה 15", "price": "₪159" },
-    { "src": "images/tshirt-new-16.jpg", "name": "חולצה 16", "price": "₪159" },
-    { "src": "images/tshirt-new-17.jpg", "name": "חולצה 17", "price": "₪159" }
+    {
+      "src": "images/tshirt-new-1.jpg",
+      "name": "××××¦× 1",
+      "price": "âª159"
+    },
+    {
+      "src": "images/tshirt-new-2.jpg",
+      "name": "××××¦× 2",
+      "price": "âª159"
+    },
+    {
+      "src": "images/tshirt-new-3.jpg",
+      "name": "××××¦× 3",
+      "price": "âª159"
+    },
+    {
+      "src": "images/tshirt-new-4.jpg",
+      "name": "××××¦× 4",
+      "price": "âª159"
+    },
+    {
+      "src": "images/tshirt-new-5.jpg",
+      "name": "××××¦× 5",
+      "price": "âª159"
+    },
+    {
+      "src": "images/tshirt-new-6.jpg",
+      "name": "××××¦× 6",
+      "price": "âª159"
+    },
+    {
+      "src": "images/tshirt-new-7.jpg",
+      "name": "××××¦× 7",
+      "price": "âª159"
+    },
+    {
+      "src": "images/tshirt-new-8.jpg",
+      "name": "××××¦× 8",
+      "price": "âª159"
+    },
+    {
+      "src": "images/tshirt-new-9.jpg",
+      "name": "××××¦× 9",
+      "price": "âª159"
+    },
+    {
+      "src": "images/tshirt-new-10.jpg",
+      "name": "××××¦× 10",
+      "price": "âª159"
+    },
+    {
+      "src": "images/tshirt-new-11.jpg",
+      "name": "××××¦× 11",
+      "price": "âª159"
+    },
+    {
+      "src": "images/tshirt-new-12.jpg",
+      "name": "××××¦× 12",
+      "price": "âª159"
+    },
+    {
+      "src": "images/tshirt-new-13.jpg",
+      "name": "××××¦× 13",
+      "price": "âª159"
+    },
+    {
+      "src": "images/tshirt-new-14.jpg",
+      "name": "××××¦× 14",
+      "price": "âª159"
+    },
+    {
+      "src": "images/tshirt-new-15.jpg",
+      "name": "××××¦× 15",
+      "price": "âª159"
+    },
+    {
+      "src": "images/tshirt-new-16.jpg",
+      "name": "××××¦× 16",
+      "price": "âª159"
+    },
+    {
+      "src": "images/tshirt-new-17.jpg",
+      "name": "××××¦× 17",
+      "price": "âª159"
+    }
   ],
   "suits": [],
   "shorts": [],
   "jeans": [
-    { "src": "images/jeans-new-1.jpg", "name": "ג'ינס 1", "price": "₪179" },
-    { "src": "images/jeans-new-2.jpg", "name": "ג'ינס 2", "price": "₪179" },
-    { "src": "images/jeans-new-3.jpg", "name": "ג'ינס 3", "price": "₪179" },
-    { "src": "images/jeans-new-4.jpg", "name": "ג'ינס 4", "price": "₪179" },
-    { "src": "images/jeans-new-5.jpg", "name": "ג'ינס 5", "price": "₪179" },
-    { "src": "images/jeans-new-6.jpg", "name": "ג'ינס 6", "price": "₪179" },
-    { "src": "images/jeans-new-7.jpg",  "name": "ג'ינס 7",  "price": "₪179" },
-    { "src": "images/jeans-new-8.jpg",  "name": "ג'ינס 8",  "price": "₪199" },
-    { "src": "images/jeans-new-9.jpg",  "name": "ג'ינס 9",  "price": "₪199" },
-    { "src": "images/jeans-new-10.jpg", "name": "ג'ינס 10", "price": "₪199" },
-    { "src": "images/jeans-new-11.jpg", "name": "ג'ינס 11", "price": "₪199" },
-    { "src": "images/jeans-new-12.jpg", "name": "ג'ינס 12", "price": "₪199" },
-    { "src": "images/jeans-new-13.jpg", "name": "ג'ינס 13", "price": "₪199" },
-    { "src": "images/jeans-new-14.jpg", "name": "ג'ינס 14", "price": "₪199" },
-    { "src": "images/jeans-new-15.jpg", "name": "ג'ינס 15", "price": "₪199" },
-    { "src": "images/jeans-new-16.jpg", "name": "ג'ינס 16", "price": "₪199" },
-    { "src": "images/jeans-new-17.jpg", "name": "ג'ינס 17", "price": "₪239" },
-    { "src": "images/jeans-new-18.jpg", "name": "ג'ינס 18", "price": "₪239" },
-    { "src": "images/jeans-new-19.jpg", "name": "ג'ינס 19", "price": "₪219" },
-    { "src": "images/jeans-new-20.jpg", "name": "ג'ינס 20", "price": "₪219" }
+    {
+      "src": "images/jeans-new-1.jpg",
+      "name": "×'×× ×¡ 1",
+      "price": "âª179"
+    },
+    {
+      "src": "images/jeans-new-2.jpg",
+      "name": "×'×× ×¡ 2",
+      "price": "âª179"
+    },
+    {
+      "src": "images/jeans-new-3.jpg",
+      "name": "×'×× ×¡ 3",
+      "price": "âª179"
+    },
+    {
+      "src": "images/jeans-new-4.jpg",
+      "name": "×'×× ×¡ 4",
+      "price": "âª179"
+    },
+    {
+      "src": "images/jeans-new-5.jpg",
+      "name": "×'×× ×¡ 5",
+      "price": "âª179"
+    },
+    {
+      "src": "images/jeans-new-6.jpg",
+      "name": "×'×× ×¡ 6",
+      "price": "âª179"
+    },
+    {
+      "src": "images/jeans-new-7.jpg",
+      "name": "×'×× ×¡ 7",
+      "price": "âª179"
+    },
+    {
+      "src": "images/jeans-new-8.jpg",
+      "name": "×'×× ×¡ 8",
+      "price": "âª199"
+    },
+    {
+      "src": "images/jeans-new-9.jpg",
+      "name": "×'×× ×¡ 9",
+      "price": "âª199"
+    },
+    {
+      "src": "images/jeans-new-10.jpg",
+      "name": "×'×× ×¡ 10",
+      "price": "âª199"
+    },
+    {
+      "src": "images/jeans-new-11.jpg",
+      "name": "×'×× ×¡ 11",
+      "price": "âª199"
+    },
+    {
+      "src": "images/jeans-new-12.jpg",
+      "name": "×'×× ×¡ 12",
+      "price": "âª199"
+    },
+    {
+      "src": "images/jeans-new-13.jpg",
+      "name": "×'×× ×¡ 13",
+      "price": "âª199"
+    },
+    {
+      "src": "images/jeans-new-14.jpg",
+      "name": "×'×× ×¡ 14",
+      "price": "âª199"
+    },
+    {
+      "src": "images/jeans-new-15.jpg",
+      "name": "×'×× ×¡ 15",
+      "price": "âª199"
+    },
+    {
+      "src": "images/jeans-new-16.jpg",
+      "name": "×'×× ×¡ 16",
+      "price": "âª199"
+    },
+    {
+      "src": "images/jeans-new-17.jpg",
+      "name": "×'×× ×¡ 17",
+      "price": "âª239"
+    },
+    {
+      "src": "images/jeans-new-18.jpg",
+      "name": "×'×× ×¡ 18",
+      "price": "âª239"
+    },
+    {
+      "src": "images/jeans-new-19.jpg",
+      "name": "×'×× ×¡ 19",
+      "price": "âª219"
+    },
+    {
+      "src": "images/jeans-new-20.jpg",
+      "name": "×'×× ×¡ 20",
+      "price": "âª219"
+    }
   ],
   "shoes": [
-    { "src": "images/shoe-void-black.jpg",       "name": "סניקרס Void 2025 שחור",          "price": "₪299" },
-    { "src": "images/shoe-void-beige.jpg",       "name": "סניקרס Void 2025 בז'",           "price": "₪299" },
-    { "src": "images/shoe-voga-white.jpg",       "name": "סניקרס VOGA לבן",                "price": "₪299" },
-    { "src": "images/shoe-qoqll-bw.jpg",         "name": "סניקרס QOQLL שחור-לבן",         "price": "₪179" },
-    { "src": "images/shoe-sandal-black.jpg",     "name": "סנדל כפכף שחור עם אבזמים",      "price": "₪179" },
-    { "src": "images/shoe-gray-sneaker.jpg",     "name": "סניקרס אפור פלטפורמה",           "price": "₪349" },
-    { "src": "images/shoe-new-1.jpg", "name": "נעל 7",  "price": "₪299" },
-    { "src": "images/shoe-new-2.jpg", "name": "נעל 8",  "price": "₪299" },
-    { "src": "images/shoe-new-3.jpg", "name": "נעל 9",  "price": "₪299" }
+    {
+      "src": "images/shoe-sandal-black.jpg",
+      "name": "×¡× ×× ××¤××£ ×©×××¨ ×¢× ××××××",
+      "price": "âª179"
+    },
+    {
+      "src": "images/shoe-gray-sneaker.jpg",
+      "name": "×¡× ××§×¨×¡ ××¤××¨ ×¤×××¤××¨××",
+      "price": "âª349"
+    },
+    {
+      "src": "images/shoe-new-1.jpg",
+      "name": "נעל 3",
+      "price": "₪299"
+    },
+    {
+      "src": "images/shoe-new-2.jpg",
+      "name": "נעל 4",
+      "price": "₪299"
+    },
+    {
+      "src": "images/shoe-new-3.jpg",
+      "name": "נעל 5",
+      "price": "₪299"
+    }
   ]
 }
