@@ -171,6 +171,109 @@
       transform: translateY(-2px);
     }
 
+    /* ── AUTH ── */
+    .auth-user-btn {
+      position: fixed;
+      top: 1rem; left: 1rem;
+      z-index: 3000;
+      background: rgba(10,10,10,0.85);
+      border: 1.5px solid rgba(201,168,76,0.5);
+      border-radius: 50px;
+      padding: 0.4rem 1rem;
+      color: var(--gold);
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; gap: 0.4rem;
+      transition: all 0.2s;
+    }
+    .auth-user-btn:hover { border-color: var(--gold); background: rgba(20,20,20,0.95); }
+
+    .auth-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 5000;
+      align-items: center; justify-content: center;
+    }
+    .auth-overlay.open { display: flex; }
+
+    .auth-box {
+      background: #141414;
+      border: 1.5px solid rgba(201,168,76,0.3);
+      border-radius: 18px;
+      padding: 2rem 1.5rem;
+      width: 90%; max-width: 360px;
+      position: relative;
+    }
+    .auth-close {
+      position: absolute; top: 0.8rem; left: 0.8rem;
+      background: none; border: none;
+      color: #888; font-size: 1.1rem; cursor: pointer;
+    }
+    .auth-logo {
+      text-align: center;
+      color: var(--gold);
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+    }
+    .auth-tabs {
+      display: flex; border-bottom: 1px solid #2a2a2a;
+      margin-bottom: 1.4rem;
+    }
+    .auth-tab {
+      flex: 1; background: none; border: none;
+      color: #888; font-family: 'Heebo', sans-serif;
+      font-size: 0.95rem; font-weight: 700;
+      padding: 0.6rem; cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .auth-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    .auth-form { display: flex; flex-direction: column; gap: 0.75rem; }
+    .auth-input {
+      background: #1e1e1e; border: 1.5px solid #2a2a2a;
+      color: #fff; border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-family: 'Heebo', sans-serif; font-size: 0.95rem;
+      direction: rtl; outline: none;
+      transition: border-color 0.2s;
+    }
+    .auth-input:focus { border-color: var(--gold); }
+    .auth-input::placeholder { color: #555; }
+
+    .auth-submit {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000; border: none; border-radius: 50px;
+      padding: 0.85rem; font-family: 'Heebo', sans-serif;
+      font-size: 1rem; font-weight: 800; cursor: pointer;
+      margin-top: 0.3rem; transition: all 0.2s;
+    }
+    .auth-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,168,76,0.4); }
+
+    .auth-msg { font-size: 0.82rem; text-align: center; min-height: 1.1rem; margin-top: 0.2rem; }
+    .auth-msg.err { color: #f44336; }
+    .auth-msg.ok  { color: #4caf50; }
+
+    .auth-welcome {
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .auth-welcome p { color: #ccc; font-size: 0.95rem; margin-bottom: 1.2rem; }
+    .auth-welcome strong { color: var(--gold); }
+    .auth-logout {
+      background: #1e1e1e; border: 1.5px solid #444;
+      color: #ccc; border-radius: 50px;
+      padding: 0.6rem 1.5rem; font-family: 'Heebo', sans-serif;
+      font-size: 0.9rem; cursor: pointer; transition: all 0.2s;
+    }
+    .auth-logout:hover { border-color: #f44336; color: #f44336; }
+
     /* ── CATEGORIES ── */
     .categories-section {
       display: flex;
@@ -515,6 +618,52 @@
 </head>
 <body>
 
+  <!-- ── AUTH BUTTON ── -->
+  <button class="auth-user-btn" id="auth-user-btn" onclick="openAuthModal()">
+    <span>👤</span><span id="auth-btn-label">הרשמה / כניסה</span>
+  </button>
+
+  <!-- ── AUTH MODAL ── -->
+  <div class="auth-overlay" id="auth-overlay" onclick="handleAuthBgClick(event)">
+    <div class="auth-box">
+      <button class="auth-close" onclick="closeAuthModal()">✕</button>
+      <div class="auth-logo">44 BOUTIQUE</div>
+
+      <!-- מחובר -->
+      <div id="auth-welcome" class="auth-welcome" style="display:none">
+        <p>שלום, <strong id="auth-username"></strong> 👋</p>
+        <p style="font-size:0.8rem;color:#666;margin-bottom:1rem" id="auth-userphone"></p>
+        <button class="auth-logout" onclick="doLogout()">התנתק</button>
+      </div>
+
+      <!-- לא מחובר -->
+      <div id="auth-forms">
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tab-btn-reg" onclick="switchTab('reg')">הרשמה</button>
+          <button class="auth-tab" id="tab-btn-login" onclick="switchTab('login')">כניסה</button>
+        </div>
+
+        <!-- הרשמה -->
+        <div id="tab-reg" class="auth-form">
+          <input class="auth-input" id="reg-name"  type="text"     placeholder="שם מלא" />
+          <input class="auth-input" id="reg-phone" type="tel"      placeholder="טלפון" />
+          <input class="auth-input" id="reg-email" type="email"    placeholder="אימייל" />
+          <input class="auth-input" id="reg-pass"  type="password" placeholder="סיסמה (לפחות 6 תווים)" />
+          <button class="auth-submit" onclick="doRegister()">הירשם</button>
+          <div class="auth-msg" id="reg-msg"></div>
+        </div>
+
+        <!-- כניסה -->
+        <div id="tab-login" class="auth-form" style="display:none">
+          <input class="auth-input" id="login-email" type="email"    placeholder="אימייל" />
+          <input class="auth-input" id="login-pass"  type="password" placeholder="סיסמה" />
+          <button class="auth-submit" onclick="doLogin()">כניסה</button>
+          <div class="auth-msg" id="login-msg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ── FLOATING NAV ── -->
   <nav id="floating-nav" class="floating-nav">
     <span class="nav-logo">44 MEN'S BOUTIQUE</span>
@@ -637,8 +786,101 @@
     </div>
   </div>
 
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
   <script>
-    const WA_NUMBER = '972504375644';
+    // ── FIREBASE CONFIG – החלף בפרטים שלך מ-Firebase Console ──
+    const firebaseConfig = {
+      apiKey:            "REPLACE_API_KEY",
+      authDomain:        "REPLACE_AUTH_DOMAIN",
+      projectId:         "REPLACE_PROJECT_ID",
+      storageBucket:     "REPLACE_STORAGE_BUCKET",
+      messagingSenderId: "REPLACE_SENDER_ID",
+      appId:             "REPLACE_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db   = firebase.firestore();
+
+    let currentUser = null;
+
+    auth.onAuthStateChanged(function(user) {
+      currentUser = user;
+      if (user) {
+        db.collection('users').doc(user.uid).get().then(function(doc) {
+          var name  = doc.exists ? doc.data().name  : user.email;
+          var phone = doc.exists ? doc.data().phone : '';
+          document.getElementById('auth-username').textContent  = name;
+          document.getElementById('auth-userphone').textContent = phone ? 'טלפון: ' + phone : '';
+          document.getElementById('auth-btn-label').textContent = name;
+          document.getElementById('auth-welcome').style.display = 'block';
+          document.getElementById('auth-forms').style.display   = 'none';
+        });
+      } else {
+        document.getElementById('auth-btn-label').textContent = 'הרשמה / כניסה';
+        document.getElementById('auth-welcome').style.display = 'none';
+        document.getElementById('auth-forms').style.display   = 'block';
+      }
+    });
+
+    function openAuthModal()  { document.getElementById('auth-overlay').classList.add('open'); }
+    function closeAuthModal() { document.getElementById('auth-overlay').classList.remove('open'); }
+    function handleAuthBgClick(e) { if (e.target === document.getElementById('auth-overlay')) closeAuthModal(); }
+
+    function switchTab(t) {
+      var isReg = (t === 'reg');
+      document.getElementById('tab-reg').style.display   = isReg ? 'flex' : 'none';
+      document.getElementById('tab-login').style.display = isReg ? 'none' : 'flex';
+      document.getElementById('tab-btn-reg').classList.toggle('active',  isReg);
+      document.getElementById('tab-btn-login').classList.toggle('active', !isReg);
+    }
+
+    function setMsg(id, text, type) {
+      var el = document.getElementById(id);
+      el.textContent = text;
+      el.className = 'auth-msg ' + (type || '');
+    }
+
+    function doRegister() {
+      var name  = document.getElementById('reg-name').value.trim();
+      var phone = document.getElementById('reg-phone').value.trim();
+      var email = document.getElementById('reg-email').value.trim();
+      var pass  = document.getElementById('reg-pass').value;
+      if (!name || !email || !pass) { setMsg('reg-msg', 'יש למלא שם, אימייל וסיסמה', 'err'); return; }
+      setMsg('reg-msg', 'נרשם...', '');
+      auth.createUserWithEmailAndPassword(email, pass)
+        .then(function(cred) {
+          return db.collection('users').doc(cred.user.uid).set({ name: name, phone: phone, email: email, createdAt: new Date() });
+        })
+        .then(function() { setMsg('reg-msg', '✓ נרשמת בהצלחה!', 'ok'); setTimeout(closeAuthModal, 1200); })
+        .catch(function(e) {
+          var msg = e.code === 'auth/email-already-in-use' ? 'אימייל כבר רשום' :
+                    e.code === 'auth/weak-password'        ? 'סיסמה חלשה מדי' : e.message;
+          setMsg('reg-msg', msg, 'err');
+        });
+    }
+
+    function doLogin() {
+      var email = document.getElementById('login-email').value.trim();
+      var pass  = document.getElementById('login-pass').value;
+      if (!email || !pass) { setMsg('login-msg', 'יש למלא אימייל וסיסמה', 'err'); return; }
+      setMsg('login-msg', 'נכנס...', '');
+      auth.signInWithEmailAndPassword(email, pass)
+        .then(function() { setMsg('login-msg', '✓ ברוך הבא!', 'ok'); setTimeout(closeAuthModal, 1000); })
+        .catch(function(e) {
+          var msg = e.code === 'auth/wrong-password' || e.code === 'auth/user-not-found' ? 'אימייל או סיסמה שגויים' : e.message;
+          setMsg('login-msg', msg, 'err');
+        });
+    }
+
+    function doLogout() {
+      auth.signOut().then(closeAuthModal);
+    }
+
+  const WA_NUMBER = '972504375644';
     const SIZES_CLOTHING = ['S', 'M', 'L', 'XL', 'XXL'];
     const SIZES_PANTS    = ['28', '30', '32', '34', '36', '38'];
     const SIZES_SHOES    = ['40', '41', '42', '43', '44', '45', '46'];
@@ -769,6 +1011,12 @@
 
     function sendOrderWA() {
       if (!currentItem) return;
+      if (!currentUser) {
+        closeGridGallery();
+        openAuthModal();
+        setMsg('reg-msg', 'יש להירשם כדי להזמין 👆', 'err');
+        return;
+      }
       var imgUrl = 'https://44-mens-boutique.github.io/44-mens-boutique/' + currentItem.src;
       var msg = 'היי! ראיתי את *' + currentItem.name + '* באתר 44 Men\'s Boutique 🔥\n' +
         'מחיר: ' + currentItem.price + '\n';
