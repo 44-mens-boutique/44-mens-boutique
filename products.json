@@ -204,29 +204,29 @@
     {
       "src": "images/shoe-new-1.jpg",
       "name": "נעל 3",
-      "price": "₪299"
+      "price": "299 ש\"ח"
     },
     {
       "src": "images/shoe-new-2.jpg",
       "name": "נעל 4",
-      "price": "₪299"
+      "price": "299 ש\"ח"
     },
     {
       "src": "images/shoe-new-3.jpg",
       "name": "נעל 5",
-      "price": "₪299"
+      "price": "299 ש\"ח"
     },
     {
       "src": "images/shoe-sale-1.jpg",
       "name": "סניקרס שחור-לבן",
-      "price": "₪179"
+      "price": "179 ש\"ח"
     }
   ],
   "sale": [
     {
       "src": "images/shoe-sale-1.jpg",
       "name": "סניקרס שחור-לבן",
-      "price": "₪179"
+      "price": "179 ש\"ח"
     }
   ]
 }
