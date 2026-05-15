@@ -4,11 +4,11 @@
   "shorts": [],
   "jeans": [],
   "shoes": [
-    { "src": "images/shoe-void-black.jpg",       "name": "סניקרס Void 2025 שחור",                                         "price": "₪299" },
-    { "src": "images/shoe-void-beige.jpg",       "name": "סניקרס Void 2025 בז'",                                          "price": "₪299" },
-    { "src": "images/shoe-voga-white.jpg",       "name": "סניקרס VOGA לבן",                                               "price": "₪299" },
-    { "src": "images/shoe-qoqll-bw.jpg",         "name": "סניקרס QOQLL שחור-לבן",                                        "price": "₪179" },
-    { "src": "images/shoe-sandal-black.jpg",     "name": "סנדל כפכף שחור עם אבזמים",                                     "price": "₪179" },
-    { "src": "images/shoe-gray-sneaker.jpg",     "name": "סניקרס אפור פלטפורמה",                                          "price": "₪349" }
+    { "src": "images/shoe-void-black.jpg",       "name": "סניקרס Void 2025 שחור",          "price": "₪299" },
+    { "src": "images/shoe-void-beige.jpg",       "name": "סניקרס Void 2025 בז'",           "price": "₪299" },
+    { "src": "images/shoe-voga-white.jpg",       "name": "סניקרס VOGA לבן",                "price": "₪299" },
+    { "src": "images/shoe-qoqll-bw.jpg",         "name": "סניקרס QOQLL שחור-לבן",         "price": "₪179" },
+    { "src": "images/shoe-sandal-black.jpg",     "name": "סנדל כפכף שחור עם אבזמים",      "price": "₪179" },
+    { "src": "images/shoe-gray-sneaker.jpg",     "name": "סניקרס אפור פלטפורמה",           "price": "₪349" }
   ]
 }
