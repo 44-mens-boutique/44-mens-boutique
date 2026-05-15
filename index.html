@@ -230,6 +230,61 @@
       color: #ff6666;
     }
 
+    /* ── PRODUCTS ON PAGE ── */
+    .products-section {
+      padding: 2.5rem 1rem 1rem;
+      background: #111;
+    }
+    .products-section-title {
+      color: var(--gold);
+      font-size: clamp(1.2rem, 5vw, 1.8rem);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.2rem;
+      padding-right: 0.5rem;
+      border-right: 4px solid var(--gold);
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+    }
+    @media (min-width: 500px) {
+      .products-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .product-card {
+      background: #1a1a1a;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,168,76,0.4);
+    }
+    .product-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+    }
+    .product-card-info {
+      padding: 0.6rem 0.7rem 0.75rem;
+    }
+    .product-card-name {
+      font-size: 0.78rem;
+      color: #ccc;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .product-card-price {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
     /* ── CONTACT ── */
     .contact {
       background: #111;
@@ -508,6 +563,9 @@
 
   </div>
 
+  <!-- ── PRODUCTS BY CATEGORY ── -->
+  <div id="products-on-page"></div>
+
   <!-- ── CONTACT ── -->
   <section class="contact" id="contact">
     <div class="section-title">
@@ -605,6 +663,58 @@
       );
     }
 
+    var CAT_ORDER = [
+      { key: 'tshirts', label: 'חולצות',  sizes: SIZES_CLOTHING },
+      { key: 'suits',   label: 'חליפות',  sizes: SIZES_CLOTHING },
+      { key: 'jeans',   label: 'ג\'ינסים', sizes: SIZES_PANTS    },
+      { key: 'shorts',  label: 'מכנסיים', sizes: SIZES_PANTS    },
+      { key: 'shoes',   label: 'נעליים',  sizes: SIZES_SHOES    },
+      { key: 'sale',    label: 'SALE 🔥', sizes: SIZES_CLOTHING },
+    ];
+
+    function renderProductsOnPage() {
+      var container = document.getElementById('products-on-page');
+      container.innerHTML = '';
+      var dataMap = {
+        tshirts: tshirtImages, suits: suitImages,
+        jeans: jeansImages, shorts: shortsImages,
+        shoes: shoeImages, sale: saleImages
+      };
+      CAT_ORDER.forEach(function(cat) {
+        var items = dataMap[cat.key] || [];
+        if (!items.length) return;
+        var section = document.createElement('div');
+        section.className = 'products-section';
+        var title = document.createElement('h2');
+        title.className = 'products-section-title';
+        title.textContent = cat.label;
+        var grid = document.createElement('div');
+        grid.className = 'products-grid';
+        items.forEach(function(item, i) {
+          var card = document.createElement('div');
+          card.className = 'product-card';
+          card.innerHTML = '<img src="' + item.src + '" alt="' + item.name + '" loading="lazy" />' +
+            '<div class="product-card-info">' +
+            '<div class="product-card-name">' + item.name + '</div>' +
+            '<div class="product-card-price">' + item.price + '</div>' +
+            '</div>';
+          var itemWithSizes = Object.assign({}, item, { sizes: cat.sizes, category: cat.label });
+          card.onclick = function() {
+            currentGalleryKey = cat.key;
+            currentSizeList = cat.sizes;
+            currentGridImages = items.map(function(x) { return Object.assign({}, x, { sizes: cat.sizes, category: cat.label }); });
+            showDetail(i);
+            document.getElementById('grid-gallery-modal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+          };
+          grid.appendChild(card);
+        });
+        section.appendChild(title);
+        section.appendChild(grid);
+        container.appendChild(section);
+      });
+    }
+
     fetch('products.json?v=' + Date.now())
       .then(function(r) { return r.json(); })
       .then(function(data) {
@@ -615,6 +725,7 @@
         shoeImages   = data.shoes   || [];
         saleImages   = data.sale    || [];
         buildAllItems();
+        renderProductsOnPage();
       })
       .catch(function() { buildAllItems(); });
 
