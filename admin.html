@@ -278,13 +278,14 @@
   }
 
   async function confirmDelete() {
-    closeModal();
     if (!pendingDelete) return;
+    const toDelete = pendingDelete;
+    closeModal();
 
     const token = getToken();
     if (!token) { setStatus('חסר GitHub Token', 'err'); return; }
 
-    const { cat, item } = pendingDelete;
+    const { cat, item } = toDelete;
     setStatus('מוחק "' + item.name + '"...', 'wait');
 
     // Remove from local data
