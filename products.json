@@ -1,30 +1,8 @@
 {
   "tshirts": [],
-  "suits": [
-    { "src": "images/suit-set-black-pool.jpg",   "name": "סט שחור – חולצה + מכנסיים",                                    "price": "₪279" },
-    { "src": "images/suit-set-knit-black.jpg",   "name": "סט סריג שחור – חולצה + מכנסיים",                              "price": "₪279" },
-    { "src": "images/suit-white.jpg",            "name": "חליפת לינן לבנה",                                               "price": "₪299" },
-    { "src": "images/suit-beige.jpg",            "name": "חליפת לינן בז'",                                                "price": "₪349" },
-    { "src": "images/suit-black.jpg",            "name": "חליפת לינן שחורה",                                              "price": "₪349" }
-  ],
-  "shorts": [
-    { "src": "images/shorts-jeans-blue.jpg",     "name": "ג'ינס קצר קרוע כחול",                                          "price": "₪219" },
-    { "src": "images/shorts-jeans-light.jpg",    "name": "ג'ינס קצר קרוע תכלת",                                          "price": "₪219" },
-    { "src": "images/shorts-denim-drawstring.jpg","name": "ג'ינס קצר כחול עם שרוך",                                      "price": "₪189" },
-    { "src": "images/shorts-brown.jpg",          "name": "מכנסיים קצרים חומים",                                           "price": "₪189" },
-    { "src": "images/shorts-corduroy-beige.jpg", "name": "מכנסיים קצרים קורדרוי בז'",                                    "price": "₪179" },
-    { "src": "images/shorts-cow-jeans.jpg",      "name": "ג'ינס קצר קרוע C.O.W",                                         "price": "₪179" },
-    { "src": "images/shorts-black-print.jpg",    "name": "מכנסיים קצרים שחורים פרינט",                                   "price": "₪139" },
-    { "src": "images/shorts-pink-paisley.jpg",   "name": "מכנסיים קצרים פייזלי ורוד",                                    "price": "₪139" },
-    { "src": "images/shorts-gray-embossed.jpg",  "name": "מכנסיים קצרים אפורים",                                          "price": "₪139" },
-    { "src": "images/shorts-gray-black-duo.jpg", "name": "מכנסיים קצרים אפור/שחור",                                      "price": "₪139" },
-    { "src": "images/shorts-white-crack.jpg",    "name": "מכנסיים קצרים לבנים פרינט סדקים",                              "price": "₪139" },
-    { "src": "images/shorts-cream-bandana.jpg",  "name": "מכנסיים קצרים קרם בנדנה שחור",                                 "price": "₪139" },
-    { "src": "images/shorts-bicolor-paisley.jpg","name": "מכנסיים קצרים פייזלי שחור לבן",                                "price": "₪139" }
-  ],
-  "jeans": [
-    { "src": "images/jeans-ripped-blue.jpg",     "name": "ג'ינס קרוע אוברסייז כחול",                                     "price": "₪239" }
-  ],
+  "suits": [],
+  "shorts": [],
+  "jeans": [],
   "shoes": [
     { "src": "images/shoe-void-black.jpg",       "name": "סניקרס Void 2025 שחור",                                         "price": "₪299" },
     { "src": "images/shoe-void-beige.jpg",       "name": "סניקרס Void 2025 בז'",                                          "price": "₪299" },
