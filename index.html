@@ -873,9 +873,6 @@
         document.getElementById('auth-btn-label').textContent = 'הרשמה / כניסה';
         document.getElementById('auth-welcome').style.display = 'none';
         document.getElementById('auth-forms').style.display   = 'block';
-        // חסום כניסה לאתר עד הרשמה
-        openAuthModal();
-        document.getElementById('auth-overlay').classList.add('mandatory');
       }
     });
 
@@ -1105,6 +1102,7 @@
       if (!currentUser) {
         closeGridGallery();
         openAuthModal();
+        document.getElementById('auth-overlay').classList.add('mandatory');
         setMsg('reg-msg', 'יש להירשם כדי להזמין 👆', 'err');
         return;
       }
