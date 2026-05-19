@@ -398,6 +398,28 @@
       "price": "179 ש\"ח"
     }
   ],
+  "swimwear": [
+    {
+      "src": "images/swim-new-1.jpg",
+      "name": "בגד ים שחור paisley",
+      "price": "149 ש\"ח"
+    },
+    {
+      "src": "images/swim-new-2.jpg",
+      "name": "בגד ים כתום paisley",
+      "price": "149 ש\"ח"
+    },
+    {
+      "src": "images/swim-new-3.jpg",
+      "name": "בגד ים זהב paisley",
+      "price": "149 ש\"ח"
+    },
+    {
+      "src": "images/swim-new-4.jpg",
+      "name": "בגד ים סלמון paisley",
+      "price": "149 ש\"ח"
+    }
+  ],
   "sale": [
     {
       "src": "images/shoe-sale-1.jpg",

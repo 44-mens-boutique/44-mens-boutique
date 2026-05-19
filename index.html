@@ -757,6 +757,9 @@
     <div class="cat-tile" onclick="openCategoryGallery('shorts')">
       <span class="cat-tile-label">מכנסיים</span>
     </div>
+    <div class="cat-tile" style="background-image: url('images/swim-new-1.jpg')" onclick="openCategoryGallery('swimwear')">
+      <span class="cat-tile-label">בגדי ים</span>
+    </div>
 
   </div>
 
@@ -973,7 +976,7 @@
     const SIZES_PANTS    = ['28', '30', '32', '34', '36', '38'];
     const SIZES_SHOES    = ['40', '41', '42', '43', '44', '45', '46'];
 
-    let tshirtImages = [], suitImages = [], shortsImages = [], jeansImages = [], shoeImages = [], saleImages = [];
+    let tshirtImages = [], suitImages = [], shortsImages = [], jeansImages = [], shoeImages = [], saleImages = [], swimImages = [];
     let allItems = [];
     let currentGridImages = [];
     let currentItem = null;
@@ -991,7 +994,8 @@
         tag(suitImages,   SIZES_CLOTHING, 'חליפות'),
         tag(shortsImages, SIZES_PANTS,    'מכנסיים'),
         tag(jeansImages,  SIZES_PANTS,    'ג\'ינסים'),
-        tag(shoeImages,   SIZES_SHOES,    'נעליים')
+        tag(shoeImages,   SIZES_SHOES,    'נעליים'),
+        tag(swimImages,   SIZES_PANTS,    'בגדי ים')
       );
     }
 
@@ -1000,8 +1004,9 @@
       { key: 'suits',   label: 'חליפות',  sizes: SIZES_CLOTHING },
       { key: 'jeans',   label: 'ג\'ינסים', sizes: SIZES_PANTS    },
       { key: 'shorts',  label: 'מכנסיים', sizes: SIZES_PANTS    },
-      { key: 'shoes',   label: 'נעליים',  sizes: SIZES_SHOES    },
-      { key: 'sale',    label: 'SALE 🔥', sizes: SIZES_CLOTHING },
+      { key: 'shoes',    label: 'נעליים',   sizes: SIZES_SHOES    },
+      { key: 'swimwear', label: 'בגדי ים',  sizes: SIZES_PANTS    },
+      { key: 'sale',     label: 'SALE 🔥',  sizes: SIZES_CLOTHING },
     ];
 
     function renderProductsOnPage() {
@@ -1010,7 +1015,7 @@
       var dataMap = {
         tshirts: tshirtImages, suits: suitImages,
         jeans: jeansImages, shorts: shortsImages,
-        shoes: shoeImages, sale: saleImages
+        shoes: shoeImages, swimwear: swimImages, sale: saleImages
       };
       CAT_ORDER.forEach(function(cat) {
         var items = dataMap[cat.key] || [];
@@ -1054,7 +1059,8 @@
         shortsImages = data.shorts  || [];
         jeansImages  = data.jeans   || [];
         shoeImages   = data.shoes   || [];
-        saleImages   = data.sale    || [];
+        saleImages   = data.sale     || [];
+        swimImages   = data.swimwear || [];
         buildAllItems();
         renderProductsOnPage();
       })
@@ -1067,7 +1073,8 @@
       shorts:  { getImages: function() { return shortsImages; }, title: 'מכנסיים',        sizes: SIZES_PANTS    },
       jeans:   { getImages: function() { return jeansImages;  }, title: 'ג\'ינסים',       sizes: SIZES_PANTS    },
       shoes:   { getImages: function() { return shoeImages;   }, title: 'נעליים',         sizes: SIZES_SHOES    },
-      sale:    { getImages: function() { return saleImages.length ? saleImages : allItems; }, title: 'SALE 🔥', sizes: SIZES_CLOTHING },
+      swimwear: { getImages: function() { return swimImages;   }, title: 'בגדי ים',         sizes: SIZES_PANTS    },
+      sale:     { getImages: function() { return saleImages.length ? saleImages : allItems; }, title: 'SALE 🔥', sizes: SIZES_CLOTHING },
     };
 
     function openCategoryGallery(key) {
