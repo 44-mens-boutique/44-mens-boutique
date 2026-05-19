@@ -192,7 +192,28 @@
     }
   ],
   "suits": [],
-  "shorts": [],
+  "shorts": [
+    {
+      "src": "images/shorts-new-1.jpg",
+      "name": "שורטס לבן cracked",
+      "price": "89 ש\"ח"
+    },
+    {
+      "src": "images/shorts-new-2.jpg",
+      "name": "שורטס שחור cracked",
+      "price": "89 ש\"ח"
+    },
+    {
+      "src": "images/shorts-new-3.jpg",
+      "name": "שורטס חום tribal",
+      "price": "89 ש\"ח"
+    },
+    {
+      "src": "images/shorts-new-4.jpg",
+      "name": "שורטס טורקיז pattern",
+      "price": "89 ש\"ח"
+    }
+  ],
   "jeans": [
     {
       "src": "images/jeans-new-1.jpg",
@@ -417,6 +438,26 @@
       "src": "images/tshirt-new-38.jpg",
       "name": "חולצה לבנה raw hem",
       "price": "119 ש\"ח"
+    },
+    {
+      "src": "images/shorts-new-1.jpg",
+      "name": "שורטס לבן cracked",
+      "price": "89 ש\"ח"
+    },
+    {
+      "src": "images/shorts-new-2.jpg",
+      "name": "שורטס שחור cracked",
+      "price": "89 ש\"ח"
+    },
+    {
+      "src": "images/shorts-new-3.jpg",
+      "name": "שורטס חום tribal",
+      "price": "89 ש\"ח"
+    },
+    {
+      "src": "images/shorts-new-4.jpg",
+      "name": "שורטס טורקיז pattern",
+      "price": "89 ש\"ח"
     }
   ]
 }
