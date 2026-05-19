@@ -206,6 +206,11 @@
       "src": "images/suit-new-3.jpg",
       "name": "סט שחור mesh",
       "price": "299 ש\"ח"
+    },
+    {
+      "src": "images/suit-new-4.jpg",
+      "name": "סט קיץ לבן כותנה",
+      "price": "299 ש\"ח"
     }
   ],
   "shorts": [
