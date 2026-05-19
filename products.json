@@ -191,7 +191,23 @@
       "price": "119 ש\"ח"
     }
   ],
-  "suits": [],
+  "suits": [
+    {
+      "src": "images/suit-new-1.jpg",
+      "name": "סט לבן mesh",
+      "price": "299 ש\"ח"
+    },
+    {
+      "src": "images/suit-new-2.jpg",
+      "name": "חליפת קיץ לבנה",
+      "price": "299 ש\"ח"
+    },
+    {
+      "src": "images/suit-new-3.jpg",
+      "name": "סט שחור mesh",
+      "price": "299 ש\"ח"
+    }
+  ],
   "shorts": [
     {
       "src": "images/shorts-new-1.jpg",
