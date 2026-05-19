@@ -237,6 +237,21 @@
       "src": "images/shorts-new-9.jpg",
       "name": "שורטס קרם מרקם",
       "price": "139 ש\"ח"
+    },
+    {
+      "src": "images/shorts-new-10.jpg",
+      "name": "שורטס ירוק dè palms",
+      "price": "179 ש\"ח"
+    },
+    {
+      "src": "images/shorts-new-11.jpg",
+      "name": "שורטס כחול dè palms",
+      "price": "179 ש\"ח"
+    },
+    {
+      "src": "images/shorts-new-12.jpg",
+      "name": "שורטס שחור dè palms",
+      "price": "179 ש\"ח"
     }
   ],
   "jeans": [
