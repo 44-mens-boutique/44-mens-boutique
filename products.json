@@ -464,6 +464,16 @@
       "src": "images/elegant-new-5.jpg",
       "name": "מכנס אלגנט קרם",
       "price": "249 ש\"ח"
+    },
+    {
+      "src": "images/elegant-new-6.jpg",
+      "name": "מכנס פשתן חום",
+      "price": "159 ש\"ח"
+    },
+    {
+      "src": "images/elegant-new-7.jpg",
+      "name": "מכנס פשתן אפור",
+      "price": "159 ש\"ח"
     }
   ],
   "swimwear": [
