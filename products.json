@@ -439,6 +439,18 @@
       "price": "179 ש\"ח"
     }
   ],
+  "elegant": [
+    {
+      "src": "images/elegant-new-1.jpg",
+      "name": "מכנס אלגנט לבן",
+      "price": "199 ש\"ח"
+    },
+    {
+      "src": "images/elegant-new-2.jpg",
+      "name": "מכנס אלגנט שחור",
+      "price": "199 ש\"ח"
+    }
+  ],
   "swimwear": [
     {
       "src": "images/swim-new-1.jpg",
