@@ -771,8 +771,7 @@
   <script>
   const WA_NUMBER = '972504375644';
     const SIZES_CLOTHING = ['S', 'M', 'L', 'XL', 'XXL'];
-    const SIZES_PANTS    = ['28', '30', '32', '34', '36', '38'];
-    const SIZES_SHOES    = ['40', '41', '42', '43', '44', '45', '46'];
+    const SIZES_SHOES    = ['40', '41', '42', '43', '44', '45'];
 
     let tshirtImages = [], suitImages = [], shortsImages = [], jeansImages = [], shoeImages = [], saleImages = [], swimImages = [], elegantImages = [];
     let allItems = [];
@@ -788,25 +787,25 @@
         return arr.map(function(x) { return Object.assign({}, x, { sizes: sizes, category: cat }); });
       }
       allItems = [].concat(
-        tag(tshirtImages, SIZES_CLOTHING, 'חולצות'),
-        tag(suitImages,   SIZES_CLOTHING, 'חליפות'),
-        tag(shortsImages, SIZES_PANTS,    'מכנסיים'),
-        tag(jeansImages,  SIZES_PANTS,    'ג\'ינסים'),
-        tag(shoeImages,   SIZES_SHOES,    'נעליים'),
-        tag(swimImages,    SIZES_PANTS,    'בגדי ים'),
-        tag(elegantImages, SIZES_PANTS,    'אלגנט')
+        tag(tshirtImages,  SIZES_CLOTHING, 'חולצות'),
+        tag(suitImages,    SIZES_CLOTHING, 'חליפות'),
+        tag(shortsImages,  SIZES_CLOTHING, 'מכנסיים'),
+        tag(jeansImages,   SIZES_CLOTHING, 'ג\'ינסים'),
+        tag(shoeImages,    SIZES_SHOES,    'נעליים'),
+        tag(swimImages,    SIZES_CLOTHING, 'בגדי ים'),
+        tag(elegantImages, SIZES_CLOTHING, 'אלגנט')
       );
     }
 
     var CAT_ORDER = [
-      { key: 'tshirts', label: 'חולצות',  sizes: SIZES_CLOTHING },
-      { key: 'suits',   label: 'חליפות',  sizes: SIZES_CLOTHING },
-      { key: 'jeans',   label: 'ג\'ינסים', sizes: SIZES_PANTS    },
-      { key: 'shorts',  label: 'מכנסיים', sizes: SIZES_PANTS    },
-      { key: 'shoes',    label: 'נעליים',   sizes: SIZES_SHOES    },
-      { key: 'swimwear', label: 'בגדי ים',  sizes: SIZES_PANTS    },
-      { key: 'elegant',  label: 'אלגנט',    sizes: SIZES_PANTS    },
-      { key: 'sale',     label: 'SALE 🔥',  sizes: SIZES_CLOTHING },
+      { key: 'tshirts',  label: 'חולצות',   sizes: SIZES_CLOTHING },
+      { key: 'suits',    label: 'חליפות',   sizes: SIZES_CLOTHING },
+      { key: 'jeans',    label: 'ג\'ינסים',  sizes: SIZES_CLOTHING },
+      { key: 'shorts',   label: 'מכנסיים',  sizes: SIZES_CLOTHING },
+      { key: 'shoes',    label: 'נעליים',    sizes: SIZES_SHOES    },
+      { key: 'swimwear', label: 'בגדי ים',   sizes: SIZES_CLOTHING },
+      { key: 'elegant',  label: 'אלגנט',     sizes: SIZES_CLOTHING },
+      { key: 'sale',     label: 'SALE 🔥',   sizes: SIZES_CLOTHING },
     ];
 
     function renderProductsOnPage() {
@@ -868,14 +867,14 @@
       .catch(function() { buildAllItems(); });
 
     const GALLERY_REGISTRY = {
-      all:     { getImages: function() { return allItems;     }, title: 'הקולקציה המלאה', sizes: SIZES_CLOTHING },
-      tshirts: { getImages: function() { return tshirtImages; }, title: 'חולצות',         sizes: SIZES_CLOTHING },
-      suits:   { getImages: function() { return suitImages;   }, title: 'חליפות',         sizes: SIZES_CLOTHING },
-      shorts:  { getImages: function() { return shortsImages; }, title: 'מכנסיים',        sizes: SIZES_PANTS    },
-      jeans:   { getImages: function() { return jeansImages;  }, title: 'ג\'ינסים',       sizes: SIZES_PANTS    },
-      shoes:   { getImages: function() { return shoeImages;   }, title: 'נעליים',         sizes: SIZES_SHOES    },
-      swimwear: { getImages: function() { return swimImages;    }, title: 'בגדי ים',  sizes: SIZES_PANTS },
-      elegant:  { getImages: function() { return elegantImages; }, title: 'אלגנט',    sizes: SIZES_PANTS },
+      all:      { getImages: function() { return allItems;     }, title: 'הקולקציה המלאה', sizes: SIZES_CLOTHING },
+      tshirts:  { getImages: function() { return tshirtImages; }, title: 'חולצות',          sizes: SIZES_CLOTHING },
+      suits:    { getImages: function() { return suitImages;   }, title: 'חליפות',          sizes: SIZES_CLOTHING },
+      shorts:   { getImages: function() { return shortsImages; }, title: 'מכנסיים',         sizes: SIZES_CLOTHING },
+      jeans:    { getImages: function() { return jeansImages;  }, title: 'ג\'ינסים',        sizes: SIZES_CLOTHING },
+      shoes:    { getImages: function() { return shoeImages;   }, title: 'נעליים',          sizes: SIZES_SHOES    },
+      swimwear: { getImages: function() { return swimImages;    }, title: 'בגדי ים',        sizes: SIZES_CLOTHING },
+      elegant:  { getImages: function() { return elegantImages; }, title: 'אלגנט',          sizes: SIZES_CLOTHING },
       sale:     { getImages: function() { return saleImages.length ? saleImages : allItems; }, title: 'SALE 🔥', sizes: SIZES_CLOTHING },
     };
 
