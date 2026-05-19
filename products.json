@@ -104,6 +104,16 @@
       "src": "images/tshirt-new-21.jpg",
       "name": "חולצה 44 arbili לבנה",
       "price": "119 ש\"ח"
+    },
+    {
+      "src": "images/tshirt-new-22.jpg",
+      "name": "חולצה 44 arbili לבנה EA",
+      "price": "119 ש\"ח"
+    },
+    {
+      "src": "images/tshirt-new-23.jpg",
+      "name": "חולצה 44 arbili שחורה EA",
+      "price": "119 ש\"ח"
     }
   ],
   "suits": [],
