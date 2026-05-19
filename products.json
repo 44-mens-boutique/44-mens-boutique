@@ -84,6 +84,26 @@
       "src": "images/tshirt-new-17.jpg",
       "name": "××××¦× 17",
       "price": "159 ש\"ח"
+    },
+    {
+      "src": "images/tshirt-new-18.jpg",
+      "name": "חולצה 18",
+      "price": "199 ש\"ח"
+    },
+    {
+      "src": "images/tshirt-new-19.jpg",
+      "name": "חולצה 19",
+      "price": "199 ש\"ח"
+    },
+    {
+      "src": "images/tshirt-new-20.jpg",
+      "name": "חולצה 44 arbili שחורה",
+      "price": "119 ש\"ח"
+    },
+    {
+      "src": "images/tshirt-new-21.jpg",
+      "name": "חולצה 44 arbili לבנה",
+      "price": "119 ש\"ח"
     }
   ],
   "suits": [],
@@ -227,6 +247,16 @@
       "src": "images/shoe-sale-1.jpg",
       "name": "סניקרס שחור-לבן",
       "price": "179 ש\"ח"
+    },
+    {
+      "src": "images/tshirt-new-20.jpg",
+      "name": "חולצה 44 arbili שחורה",
+      "price": "119 ש\"ח"
+    },
+    {
+      "src": "images/tshirt-new-21.jpg",
+      "name": "חולצה 44 arbili לבנה",
+      "price": "119 ש\"ח"
     }
   ]
 }
