@@ -981,14 +981,16 @@
 
     function sendCartWA() {
       if (!cart.length) return;
+      var base = 'https://44-mens-boutique.github.io/44-mens-boutique/';
       var msg = 'היי! אני רוצה להזמין מ-44 Men\'s Boutique 🛍️\n\n';
       var total = 0;
       cart.forEach(function(item, i) {
         var price = parseInt(item.price.replace(/[^0-9]/g, '')) || 0;
         total += price;
         msg += (i + 1) + '. ' + item.name + ' – מידה ' + item.size + ' – ' + item.price + '\n';
+        msg += base + item.src + '\n\n';
       });
-      msg += '\nסה"כ: ' + total + ' ש"ח\nאשמח לאשר הזמנה 🙏';
+      msg += 'סה"כ: ' + total + ' ש"ח\nאשמח לאשר הזמנה 🙏';
       var a = document.createElement('a');
       a.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
       a.target = '_blank'; a.rel = 'noopener noreferrer';
