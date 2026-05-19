@@ -211,6 +211,16 @@
       "src": "images/suit-new-4.jpg",
       "name": "סט קיץ לבן כותנה",
       "price": "299 ש\"ח"
+    },
+    {
+      "src": "images/suit-new-5.jpg",
+      "name": "חליפת קיץ שחורה",
+      "price": "349 ש\"ח"
+    },
+    {
+      "src": "images/suit-new-6.jpg",
+      "name": "חליפת קיץ קרם",
+      "price": "349 ש\"ח"
     }
   ],
   "shorts": [
