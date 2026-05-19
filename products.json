@@ -169,6 +169,26 @@
       "src": "images/tshirt-new-34.jpg",
       "name": "חולצה שחורה ורדים",
       "price": "119 ש\"ח"
+    },
+    {
+      "src": "images/tshirt-new-35.jpg",
+      "name": "חולצה Maverick 8 אפורה",
+      "price": "119 ש\"ח"
+    },
+    {
+      "src": "images/tshirt-new-36.jpg",
+      "name": "חולצה אפורה raw hem",
+      "price": "119 ש\"ח"
+    },
+    {
+      "src": "images/tshirt-new-37.jpg",
+      "name": "חולצה שחורה raw hem",
+      "price": "119 ש\"ח"
+    },
+    {
+      "src": "images/tshirt-new-38.jpg",
+      "name": "חולצה לבנה raw hem",
+      "price": "119 ש\"ח"
     }
   ],
   "suits": [],
@@ -376,6 +396,26 @@
     {
       "src": "images/tshirt-new-34.jpg",
       "name": "חולצה שחורה ורדים",
+      "price": "119 ש\"ח"
+    },
+    {
+      "src": "images/tshirt-new-35.jpg",
+      "name": "חולצה Maverick 8 אפורה",
+      "price": "119 ש\"ח"
+    },
+    {
+      "src": "images/tshirt-new-36.jpg",
+      "name": "חולצה אפורה raw hem",
+      "price": "119 ש\"ח"
+    },
+    {
+      "src": "images/tshirt-new-37.jpg",
+      "name": "חולצה שחורה raw hem",
+      "price": "119 ש\"ח"
+    },
+    {
+      "src": "images/tshirt-new-38.jpg",
+      "name": "חולצה לבנה raw hem",
       "price": "119 ש\"ח"
     }
   ]
