@@ -88,13 +88,13 @@
       justify-content: center;
       text-align: center;
       overflow: hidden;
-      background: url('images/hero-bg.jpg') center center / cover no-repeat;
+      background: url('images/tshirt-new-16.jpg') top center / cover no-repeat;
     }
     .hero-section::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.45);
+      background: rgba(0,0,0,0.15);
     }
     .hero-content {
       position: relative;
@@ -980,7 +980,7 @@
 
     function sendCartWA() {
       if (!cart.length) return;
-      var base = 'https://44-mens-boutique.github.io/44-mens-boutique/';
+      var base = 'https://44mensboutique.com/';
       var msg = 'היי! אני רוצה להזמין מ-44 Men\'s Boutique 🛍️\n\n';
       var total = 0;
       cart.forEach(function(item, i) {
@@ -1000,7 +1000,7 @@
 
     function sendOrderWA() {
       if (!currentItem) return;
-      var imgUrl = 'https://44-mens-boutique.github.io/44-mens-boutique/' + currentItem.src;
+      var imgUrl = 'https://44mensboutique.com/' + currentItem.src;
       var msg = 'היי! ראיתי את *' + currentItem.name + '* באתר 44 Men\'s Boutique 🔥\n' +
         'מחיר: ' + currentItem.price + '\n';
       if (selectedSize) msg += 'מידה: *' + selectedSize + '*\n';
